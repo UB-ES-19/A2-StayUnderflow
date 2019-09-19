@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/yuan/PycharmProjects/stay_underflow/venv"
+VIRTUAL_ENV="/home/yuan/Documentos/Universitat/Enginyeria software/A2-StayUnderflow/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
