@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4a8f624f-e43a-40c9-8cf1-95f21bd5ae7d" name="Default Changelist" comment="" />
-    <list id="10d20e43-51ae-41dd-88c5-277abeb0c507" name="dataSources" comment="" />
-    <list id="063a3a32-8b06-4116-a04e-dd663330135a" name="Revert &quot;dataSources&quot;" comment="Revert &quot;dataSources&quot;&#10;&#10;This reverts commit e2dc325c" />
-    <list id="b29aa18a-1185-4cf4-b4f6-3ec93d7f3795" name="Workspace without venv" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="4a8f624f-e43a-40c9-8cf1-95f21bd5ae7d" name="Default Changelist" comment="Workspace without venv">
+      <change afterPath="$PROJECT_DIR$/templates/stay_underflow/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StayUnderflow_WebApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/StayUnderflow_WebApp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StayUnderflow_WebApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/StayUnderflow_WebApp/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
+    <list id="10d20e43-51ae-41dd-88c5-277abeb0c507" name="dataSources" comment="dataSources" />
+    <list id="063a3a32-8b06-4116-a04e-dd663330135a" name="Revert &quot;dataSources&quot;" comment="Revert &quot;dataSources&quot;&#10;&#10;This reverts commit e2dc325c" />
+    <list id="b29aa18a-1185-4cf4-b4f6-3ec93d7f3795" name="Workspace without venv" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +44,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="feature/login_user_back" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
