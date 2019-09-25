@@ -1,18 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
 </head>
-<body>
-<div class="contentReg">
-      <h1>Create an account</h1>
 
-      <form action="" method="post">
+{% extends 'stay_underflow/base.html' %}
+
+{% block content %}
+    <div class="contentReg">
+        <h1>Create an account</h1>
+
+        <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
           <p style="text-align: center"><input class="button" type="submit" value="Create the account"></p>
-      </form>
-</div>
-</body>
-</html>
+        </form>
+    </div>
+
+{% endblock %}

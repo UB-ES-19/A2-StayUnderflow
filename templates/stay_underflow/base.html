@@ -1,10 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% load static %}
 
-</body>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %} </title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/stayunderflow.css'%}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/login.css'%}">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="row header">
+
+            <div class="column home" style="text-align:left">
+                <a href="{% url 'stayunderflow' %}">StayUnderflow</a>
+            </div>
+
+            {% if not logged %}
+                <div class="column" style="text-align:right">
+                    <b><a style="margin:5px" href="{%url 'login' %}?next={{next_url}}"> login </a></b>
+                    <b style="margin:5px"> | </b>
+                    <b><a style="margin:5px" href="{%url 'register' %}?next={{next_url}}"> register </a></b>
+                </div>
+            {% else %}
+                <div class="column" style="text-align:right">
+                    <b>{{ username }}</b>
+                    <b><a style="margin:5px" href="{%url 'logout' %}?next={{next_url}}">logout</a></b>
+                </div>
+            {% endif %}
+
+        </div>
+
+        <div class="mainContent">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+
+    </body>
 </html>

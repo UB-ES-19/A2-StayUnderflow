@@ -31,12 +31,12 @@ def login_m(request):
             if user is not None:
                 login(request, user)
                 print("A")
-                return HttpResponseRedirect(reverse("test_login"))
+                return HttpResponseRedirect(reverse("stayunderflow"))
     else:
         connection_form = AuthenticationForm()
     return render(request, 'stay_underflow/login.html', {'form' : connection_form})
 
 # Testejar si realment ens hem loguejat
 @login_required(login_url='/login/')
-def test_login(request):
-    return HttpResponse("Podem arribar aqui")
+def stayunderflow(request):
+    return render(request, 'stay_underflow/stayunderflow.html')
