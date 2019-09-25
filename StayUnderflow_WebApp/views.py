@@ -37,6 +37,5 @@ def login_m(request):
     return render(request, 'stay_underflow/login.html', {'form' : connection_form})
 
 # Testejar si realment ens hem loguejat
-@login_required(login_url='/login/')
 def stayunderflow(request):
     return render(request, 'stay_underflow/stayunderflow.html')
