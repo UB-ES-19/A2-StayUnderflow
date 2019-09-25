@@ -19,14 +19,14 @@
 
             {% if not logged %}
                 <div class="column" style="text-align:right">
-                    <b><a style="margin:5px" href="{%url 'login' %}?next={{next_url}}"> login </a></b>
+                    <b><a style="margin:5px" href="{%url 'login' %}"> Login </a></b>
                     <b style="margin:5px"> | </b>
-                    <b><a style="margin:5px" href="{%url 'register' %}?next={{next_url}}"> register </a></b>
+                    <b><a style="margin:5px" href="{%url 'register' %}"> Register </a></b>
                 </div>
             {% else %}
                 <div class="column" style="text-align:right">
                     <b>{{ username }}</b>
-                    <b><a style="margin:5px" href="{%url 'logout' %}?next={{next_url}}">logout</a></b>
+                    <b><a style="margin:5px" href="{%url 'logout' %}">Logout</a></b>
                 </div>
             {% endif %}
 
