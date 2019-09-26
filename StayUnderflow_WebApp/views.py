@@ -12,7 +12,7 @@ def register(request):
         print(form.as_p())
         if form.is_valid():
             new_user = form.save()
-            return HttpResponseRedirect(reverse("index"))
+            return HttpResponseRedirect(reverse("stayunderflow"))
     else:
         form = UserCreationForm()
     return render(request, 'stay_underflow/register.html', {
