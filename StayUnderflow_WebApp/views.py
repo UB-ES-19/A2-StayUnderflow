@@ -38,4 +38,14 @@ def login_m(request):
 
 # Testejar si realment ens hem loguejat
 def stayunderflow(request):
-    return render(request, 'stay_underflow/stayunderflow.html')
+    if request.user.username == '':
+        logged = False
+        username = ''
+    else:
+        logged = True
+        username = request.user.username
+
+    return render(request, 'stay_underflow/stayunderflow.html', {
+        'username':username,
+         'logged':logged
+    })
