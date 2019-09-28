@@ -25,7 +25,6 @@ def register(request):
         'form': form,
     })
 
-# Testejar si realment ens hem loguejat
 class Stayunderflow(ListView):
     model =  Post # classe que agafa per anar a buscar les dades
     template_name = 'stay_underflow/stayunderflow.html' #pagina web que utilitza per a carregar la view
