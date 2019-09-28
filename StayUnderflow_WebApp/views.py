@@ -1,25 +1,30 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
+from .forms import UserRegisterForm
+from django.contrib import messages
 
 # Create your views here.
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
         print(form.as_p())
         if form.is_valid():
             new_user = form.save()
-            return HttpResponseRedirect(reverse("stayunderflow"))
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Account succesfuly created for {username}!')
+            return redirect('stayunderflow')
     else:
-        form = UserCreationForm()
+        form = UserRegisterForm()
     return render(request, 'stay_underflow/register.html', {
         'form': form,
     })
 
-def login_m(request):
+# métode login gestionat amb django
+""""def login_m(request):
     if request.method == 'POST':
         connection_form = AuthenticationForm(data=request.POST)
         print(connection_form.as_p())
@@ -34,7 +39,7 @@ def login_m(request):
                 return HttpResponseRedirect(reverse("stayunderflow"))
     else:
         connection_form = AuthenticationForm()
-    return render(request, 'stay_underflow/login.html', {'form' : connection_form})
+    return render(request, 'stay_underflow/login.html', {'form' : connection_form})"""
 
 # Testejar si realment ens hem loguejat
 def stayunderflow(request):
