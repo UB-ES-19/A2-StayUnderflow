@@ -7,7 +7,7 @@ from django.urls import reverse
 from .forms import UserRegisterForm
 from django.contrib import messages
 from .models import Post
-from django.views.generic import DetailView
+from django.views.generic import ListView, DetailView
 
 # Create your views here.
 def register(request):
@@ -24,6 +24,17 @@ def register(request):
     return render(request, 'stay_underflow/register.html', {
         'form': form,
     })
+
+# Testejar si realment ens hem loguejat
+class Stayunderflow(ListView):
+    model =  Post # classe que agafa per anar a buscar les dades
+    template_name = 'stay_underflow/stayunderflow.html' #pagina web que utilitza per a carregar la view
+    context_object_name = 'posts' # llista que utilitza (a la view) per ordenar
+    ordering = ['-date_posted'] # ordena els posts de data més recent a menys
+
+class PostDetailView(DetailView):
+    model = Post
+    template_name = 'stay_underflow/post_detail.html'
 
 # métode login gestionat amb django
 """"def login_m(request):
@@ -42,23 +53,3 @@ def register(request):
     else:
         connection_form = AuthenticationForm()
     return render(request, 'stay_underflow/login.html', {'form' : connection_form})"""
-
-# Testejar si realment ens hem loguejat
-def stayunderflow(request):
-    if request.user.username == '':
-        logged = False
-        username = ''
-    else:
-        logged = True
-        username = request.user.username
-        context = { 'posts': Post.objects.all(), 'username':username, 'logged':logged}
-        return render(request, 'stay_underflow/stayunderflow_postView.html', context)
-
-    return render(request, 'stay_underflow/stayunderflow.html', {
-        'username':username,
-         'logged':logged
-    })
-
-class PostDetailView(DetailView):
-    model = Post
-    template_name = 'stay_underflow/post_detail.html'

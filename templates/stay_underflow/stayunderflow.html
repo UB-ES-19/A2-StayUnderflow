@@ -7,15 +7,32 @@
 
 {% block content %}
 
-<div>
-    <h1 class="welcomeH1">Welcome to StayUnderflow!</h1>
-        <div class="placeDescriptionP" >
-             <p>
-                  A place where you can solve coding problems or doubts!
-                  <br><strong>Join the community!</strong>
-             </p>
-        </div>
-</div>
+    {% if user.is_authenticated %}
 
+    <h1 style="margin-top: 3%;">Preguntas principales</h1>
+
+    <div style="margin-top: 5%">
+        {% for post in posts %}
+            <div>
+                <a href="{% url 'post-detail' post.id %}" style="color: black"><h1>{{ post.title }}</h1></a>
+                <p> By {{ post.author }} on {{ post.date_posted|date:"j F, Y"}} at {{ post.date_posted|date:"G:i" }}</p>
+                <p>{{ post.content }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% else %}
+    <div>
+        <h1 class="welcomeH1">Welcome to StayUnderflow!</h1>
+            <div class="placeDescriptionP" >
+                    <p>
+                        A place where you can solve coding problems or doubts!
+                        <br><strong>Join the community!</strong>
+                    </p>
+                    <a href="{%url 'login' %}" style="color:red">Login to start asking!</a>
+            </div>
+    </div>
+
+    {% endif %}
 
 {% endblock %}
