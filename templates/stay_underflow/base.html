@@ -23,7 +23,7 @@
                 <a href="{% url 'stayunderflow' %}">StayUnderflow</a>
             </div>
 
-            {% if not logged %}
+            {% if not user.is_authenticated %}
                 <div class="column" style="text-align:right">
                     <b><a style="margin:5px" href="{%url 'login' %}"> Login </a></b>
                     <b style="margin:5px"> | </b>
@@ -47,7 +47,7 @@
                 {% endfor %}
             {% endif %}
             {% block content %}
-
+            
             {% endblock %}
         </div>
 

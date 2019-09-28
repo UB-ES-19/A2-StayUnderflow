@@ -6,6 +6,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from .forms import UserRegisterForm
 from django.contrib import messages
+from .models import Post
+from django.views.generic import DetailView
 
 # Create your views here.
 def register(request):
@@ -49,8 +51,14 @@ def stayunderflow(request):
     else:
         logged = True
         username = request.user.username
+        context = { 'posts': Post.objects.all(), 'username':username, 'logged':logged}
+        return render(request, 'stay_underflow/stayunderflow_postView.html', context)
 
     return render(request, 'stay_underflow/stayunderflow.html', {
         'username':username,
          'logged':logged
     })
+
+class PostDetailView(DetailView):
+    model = Post
+    template_name = 'stay_underflow/post_detail.html'

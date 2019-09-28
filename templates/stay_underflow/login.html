@@ -14,13 +14,20 @@
         <h1>Log in</h1>
         {% csrf_token %}
         {{ form|crispy }}
-        <button class="btn btn-outline-info" type="submit">Sign Up</button>
+        <button class="btn btn-outline-info" type="submit">Sign In</button>
         <div style="margin-top: 1%">
         <small class="text-muted">
-            Need an account? <a style="color: orangered; margin-left: 4px" href="{% url 'register' %}">Sign up now</a>
+            Need an account? <a style="color: orangered; margin-left: 4px" href="{% url 'register' %}">Register now</a>
         </small>
         </div>
         </form>
+        <div>
+            <a href="{% url 'social:begin' 'google-oauth2' %}" style="color: red">Sign up with Google</a>
+        </div>
+        <!-- No es podrà autenticar amb facebook fins que no sigui una connexió segura: https-->
+        <!--<div>
+            <a href="{% url 'social:begin' 'facebook' %}" style="color: blue">Sign up with Facebook</a>
+        </div> -->
     </div>
 
 {% endblock %}

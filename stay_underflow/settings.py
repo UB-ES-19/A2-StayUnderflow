@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +66,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -75,7 +78,6 @@ WSGI_APPLICATION = 'stay_underflow.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-# python manage.py migrate --database=
 
 DATABASES = {
     'default': { 
@@ -86,7 +88,7 @@ DATABASES = {
         'USER': 'stayunderflow',
         'PASSWORD': 'esa2',
         'HOST': 'aboveminds.com',
-        'PORT': '5432'
+        'PORT': '5432',
     }
 }
 
@@ -109,6 +111,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.open_id.OpenIdAuth',  # for Google authentication
+    'social_core.backends.google.GoogleOpenId',  # for Google authentication
+    'social_core.backends.google.GoogleOAuth2',  # for Google authentication
+    'social_core.backends.facebook.FacebookOAuth2',  # for Facebook authentication
+ 
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -123,6 +134,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'stayunderflow'
 LOGOUT_REDIRECT_URL = "/stayunderflow/"
 
@@ -132,3 +144,11 @@ LOGOUT_REDIRECT_URL = "/stayunderflow/"
 STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# Google sign up
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY ='1099422708346-0bvgj0ki2d2esu7n1s2okleb0u68235b.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'veAlVVurRvAq6lpjJRJ2L9HU'
+
+# Facebook sign up
+SOCIAL_AUTH_FACEBOOK_KEY = '383461939274683'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'a285f7d1bfe50efaa7974f3a00d4e11b'
