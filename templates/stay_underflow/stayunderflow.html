@@ -8,8 +8,11 @@
 {% block content %}
 
     {% if user.is_authenticated %}
+    <div style="margin-top: 3%; text-align: right">
+        <a href="{% url 'new-post' %}" style="color:crimson;"><h3>Fer una pregunta a la comunitat</h3></a>
+    </div>
 
-    <h1 style="margin-top: 3%;">Preguntas principales</h1>
+    <h1>Preguntes principals</h1>
 
     <div style="margin-top: 5%">
         {% for post in posts %}

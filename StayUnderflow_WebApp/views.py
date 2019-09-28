@@ -7,7 +7,8 @@ from django.urls import reverse
 from .forms import UserRegisterForm
 from django.contrib import messages
 from .models import Post
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 def register(request):
@@ -25,7 +26,6 @@ def register(request):
         'form': form,
     })
 
-# Testejar si realment ens hem loguejat
 class Stayunderflow(ListView):
     model =  Post # classe que agafa per anar a buscar les dades
     template_name = 'stay_underflow/stayunderflow.html' #pagina web que utilitza per a carregar la view
@@ -35,6 +35,15 @@ class Stayunderflow(ListView):
 class PostDetailView(DetailView):
     model = Post
     template_name = 'stay_underflow/post_detail.html'
+
+class CreatePost(LoginRequiredMixin, CreateView):
+    model = Post
+    fields = ['title', 'content']
+    template_name = 'stay_underflow/post_form.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 # métode login gestionat amb django
 """"def login_m(request):

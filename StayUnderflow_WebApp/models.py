@@ -2,6 +2,7 @@ from django.db import models
 from django import forms
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.urls import reverse
 
 # Classe que guardarà la informació de cada post
 class Post(models.Model):
@@ -13,3 +14,7 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    # retorna la direcció a el post després de crear-lo
+    def get_absolute_url(self):
+        return reverse('post-detail', kwargs={'pk': self.pk})
