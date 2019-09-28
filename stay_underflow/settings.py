@@ -74,11 +74,18 @@ WSGI_APPLICATION = 'stay_underflow.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
+# python manage.py migrate --database=
 
 DATABASES = {
-    'default': {
+    'default': { 
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3')
+        #'ENGINE': 'django.db.backends.postgresql',
+        #'NAME': 'stayunderflow',
+        #'USER': 'stayunderflow',
+        #'PASSWORD': 'esa2',
+        #'HOST': 'aboveminds.com',
+        #'PORT': '5432'
     }
 }
 
