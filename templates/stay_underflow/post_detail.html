@@ -1,0 +1,16 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Stay Underflow</title>
+</head>
+
+{% extends 'stay_underflow/base.html' %}
+
+{% block content %}
+
+    <div>
+        <h1>{{ object.title }}</h1>
+        <p> By {{ object.author }} on {{ object.date_posted|date:"j F, Y"}} at {{ object.date_posted|date:"G:i" }}</p>
+        <p>{{ object.content }}</p>
+    </div>
+
+{% endblock %}

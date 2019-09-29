@@ -1,0 +1,21 @@
+<head>
+        <meta charset="UTF-8">
+        <title>New post</title>
+    </head>
+    
+    {% extends 'stay_underflow/base.html' %}
+    
+    {% load crispy_forms_tags %}
+    
+    {% block content %}
+        <div class="contentReg">
+            <h1>New public post</h1>
+    
+            <form action="" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+              <p style="text-align: center"><input class="button" type="submit" value="Post"></p>
+            </form>
+        </div>
+    
+    {% endblock %}
