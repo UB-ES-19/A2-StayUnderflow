@@ -6,7 +6,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from .forms import UserRegisterForm
 from django.contrib import messages
-from .models import Post
+from .models import Post#,Answer
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -26,6 +26,14 @@ def register(request):
         'form': form,
     })
 
+@login_required()
+def my_profile(request):
+    return render(request, 'stay_underflow/profile.html', {
+        "posts": Post.objects.filter(author_id=request.user.pk),
+        #"answers" : Answer.objects.filter(author_id=request.user.pk)
+    })
+
+
 class Stayunderflow(ListView):
     model =  Post # classe que agafa per anar a buscar les dades
     template_name = 'stay_underflow/stayunderflow.html' #pagina web que utilitza per a carregar la view
@@ -44,21 +52,3 @@ class CreatePost(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
-
-# métode login gestionat amb django
-""""def login_m(request):
-    if request.method == 'POST':
-        connection_form = AuthenticationForm(data=request.POST)
-        print(connection_form.as_p())
-        if connection_form.is_valid():
-            print("B")
-            username = connection_form.cleaned_data["username"]
-            password = connection_form.cleaned_data["password"]
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                print("A")
-                return HttpResponseRedirect(reverse("stayunderflow"))
-    else:
-        connection_form = AuthenticationForm()
-    return render(request, 'stay_underflow/login.html', {'form' : connection_form})"""
