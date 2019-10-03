@@ -6,7 +6,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from .forms import UserRegisterForm
 from django.contrib import messages
-from .models import Post#,Answer
+from .models import Post, User#,Answer
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -31,6 +31,12 @@ def my_profile(request):
     return render(request, 'stay_underflow/profile.html', {
         "posts": Post.objects.filter(author_id=request.user.pk),
         #"answers" : Answer.objects.filter(author_id=request.user.pk)
+    })
+
+def search_users(request,username):
+    users_list = [x.username for x in User.objects.filter(username__icontains=username)]
+    return render(request, 'stay_underflow/users.html', {
+        "user_list": users_list
     })
 
 
