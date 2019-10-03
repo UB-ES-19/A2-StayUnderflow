@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a8f624f-e43a-40c9-8cf1-95f21bd5ae7d" name="Default Changelist" comment="Workspace without venv">
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <list id="10d20e43-51ae-41dd-88c5-277abeb0c507" name="dataSources" comment="dataSources" />
     <list id="063a3a32-8b06-4116-a04e-dd663330135a" name="Revert &quot;dataSources&quot;" comment="Revert &quot;dataSources&quot;&#10;&#10;This reverts commit e2dc325c" />
@@ -47,11 +48,18 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="Sprint-2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="681" />
@@ -140,6 +148,8 @@
       <workItem from="1569428346954" duration="396000" />
       <workItem from="1569428913127" duration="502000" />
       <workItem from="1569490028065" duration="2058000" />
+      <workItem from="1569857512085" duration="334000" />
+      <workItem from="1570115145135" duration="1150000" />
     </task>
     <task id="LOCAL-00001" summary="dataSources">
       <created>1569097550879</created>
