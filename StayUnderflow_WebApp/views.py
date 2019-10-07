@@ -33,11 +33,13 @@ def my_profile(request):
         #"answers" : Answer.objects.filter(author_id=request.user.pk)
     })
 
-def search_users(request,username):
+def search_users(request,username=""):
     users_list = [x.username for x in User.objects.filter(username__icontains=username)]
+
+
     return render(request, 'stay_underflow/users.html', {
-        "user_list": users_list
-    })
+            "user_list": users_list
+        })
 
 
 class Stayunderflow(ListView):

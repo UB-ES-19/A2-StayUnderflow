@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^login/$', auth_views.LoginView.as_view(template_name='stay_underflow/login.html'), name='login'),
     url(r'^auth/', include('social_django.urls', namespace='social')),
     url(r'^profile/$', views.my_profile, name='profile'),
+    url(r'^users/$', views.search_users, name='users'),
     url(r'^users/(?P<username>.*)/$', views.search_users, name='users'),
     path('stayunderflow/post/<int:pk>/', PostDetailView.as_view(), name='post-detail'), # pk serà un enter que contindrà el id del post clicat
     path('stayunderflow/post/new/', CreatePost.as_view(), name='new-post'),
