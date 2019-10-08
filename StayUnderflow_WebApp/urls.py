@@ -1,7 +1,7 @@
 from django.conf.urls import url, include
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from .views import PostDetailView, Stayunderflow, CreatePost
+from .views import PostDetailView, Stayunderflow, CreatePost, CreateAnswer
 
 from . import views as views
 
@@ -16,4 +16,5 @@ urlpatterns = [
     url(r'^users/(?P<username>.*)/$', views.search_users, name='users'),
     path('stayunderflow/post/<int:pk>/', PostDetailView.as_view(), name='post-detail'), # pk serà un enter que contindrà el id del post clicat
     path('stayunderflow/post/new/', CreatePost.as_view(), name='new-post'),
+    path('stayunderflow/post/<int:pk>/answer/', CreateAnswer.as_view(), name='new-answer'),
 ]

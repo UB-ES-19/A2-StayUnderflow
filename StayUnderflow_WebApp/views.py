@@ -6,7 +6,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from .forms import UserRegisterForm
 from django.contrib import messages
-from .models import Post, User#,Answer
+from .models import Post, Answer, User
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -59,5 +59,15 @@ class CreatePost(LoginRequiredMixin, CreateView):
     template_name = 'stay_underflow/post_form.html'
 
     def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class CreateAnswer(LoginRequiredMixin, CreateView):
+    model = Answer
+    fields = ['content']
+    template_name = 'stay_underflow/answer_form.html'
+
+    def form_valid(self, form):
+        form.instance.post = Post.objects.get(pk=self.kwargs['pk'])
         form.instance.author = self.request.user
         return super().form_valid(form)
