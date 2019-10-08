@@ -23,6 +23,14 @@
                 <a href="{% url 'stayunderflow' %}">StayUnderflow</a>
             </div>
 
+
+            <div class="column cerca">
+                <form action="{% url 'users'%}" method="get">
+                    <input name="username" type="text" placeholder="Busca usuaris...">
+                    <button type="submit"> <a class="fa fa-search"></a></button>
+                </form>
+            </div>
+
             {% if not user.is_authenticated %}
                 <div class="column" style="text-align:right">
                     <b><a style="margin:5px" href="{%url 'login' %}"> Login </a></b>
@@ -32,6 +40,7 @@
             {% else %}
                 <div class="column" style="text-align:right">
                     <b>{{ user }}</b>
+                    <b style="margin:5px"> | </b>
                     <b><a style="margin:5px" href="{%url 'logout' %}">Logout</a></b>
                 </div>
             {% endif %}

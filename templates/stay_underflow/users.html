@@ -1,0 +1,24 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+
+{% extends 'stay_underflow/base.html' %}
+
+{% block content %}
+    <h1>Users</h1>
+    {% if user_list %}
+        {% for user in user_list %}
+            <div class="contentReg">
+            USERNAME : {{ user }}
+            </div>
+        {% endfor %}
+
+    {% else %}
+        <div>
+            No user with this name
+        </div>
+    {% endif %}
+
+
+{% endblock %}
