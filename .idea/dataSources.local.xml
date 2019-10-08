@@ -7,13 +7,6 @@
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
       <user-name>stayunderflow</user-name>
-      <schema-mapping>
-        <introspection-scope>
-          <node kind="database" qname="@">
-            <node kind="schema" qname="@" />
-          </node>
-        </introspection-scope>
-      </schema-mapping>
     </data-source>
   </component>
 </project>

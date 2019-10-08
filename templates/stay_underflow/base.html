@@ -39,7 +39,7 @@
                 </div>
             {% else %}
                 <div class="column" style="text-align:right">
-                    <b>{{ user }}</b>
+                    <b><a style="margin:5px" href="{%url 'profile' %}">{{ user }}</a></b>
                     <b style="margin:5px"> | </b>
                     <b><a style="margin:5px" href="{%url 'logout' %}">Logout</a></b>
                 </div>
