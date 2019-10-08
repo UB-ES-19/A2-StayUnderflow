@@ -28,9 +28,12 @@ def register(request):
 
 @login_required()
 def my_profile(request):
+    posts = [(x.title,x.content) for x in Post.objects.filter(author_id=request.user.pk)]
+    answers = [x.content for x in Answer.objects.filter(author_id=request.user.pk)]
+
     return render(request, 'stay_underflow/profile.html', {
-        "posts": Post.objects.filter(author_id=request.user.pk),
-        #"answers" : Answer.objects.filter(author_id=request.user.pk)
+        "posts": posts,
+        "answers" : answers
     })
 
 def search_users(request):
@@ -42,6 +45,16 @@ def search_users(request):
             "user_list": users_list
         })
 
+def other_profile(request,username=""):
+    id = User.objects.get(username=username).id
+
+    posts = [(x.title,x.content) for x in Post.objects.filter(author_id=id)]
+    answers = [x.content for x in Answer.objects.filter(author_id=id)]
+
+    return render(request, 'stay_underflow/profile.html', {
+        "posts": posts,
+        "answers": answers
+    })
 
 class Stayunderflow(ListView):
     model =  Post # classe que agafa per anar a buscar les dades
