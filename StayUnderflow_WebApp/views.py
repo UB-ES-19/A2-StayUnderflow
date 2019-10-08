@@ -33,9 +33,10 @@ def my_profile(request):
         #"answers" : Answer.objects.filter(author_id=request.user.pk)
     })
 
-def search_users(request,username=""):
-    users_list = [x.username for x in User.objects.filter(username__icontains=username)]
+def search_users(request):
+    username = request.GET["username"]
 
+    users_list = [x.username for x in User.objects.filter(username__icontains=username) if username != ""]
 
     return render(request, 'stay_underflow/users.html', {
             "user_list": users_list
