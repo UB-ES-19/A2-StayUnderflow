@@ -70,6 +70,19 @@ a:hover{
     padding-left: 32px;
 }
 
+/*PROFILE.HTML*/
+.profile:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.questions{
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
 /*NO HO SE NO HO HE FET JO*/
 .welcomeH1{
     color: #3A4145;
