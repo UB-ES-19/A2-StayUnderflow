@@ -1,3 +1,4 @@
+/*MENU SUPERIOR*/
 .header{
     background-color: rgba(0, 0, 0, 0.79);
     padding: 15px;
@@ -15,19 +16,20 @@
 
 .column{
     float: left;
-    width: 30%;
+    width: 33.3%;
     text-align: center;
 }
 
 .cerca{
     font-size: 0.5em;
 }
-
+/*CONTINGUT*/
 .mainContent{
     max-width: 800px;
-    margin: 0 auto;
+    margin: 50px auto;
 }
 
+/*LINKS BARRA SUPERIOR*/
 a{
     color: white;
     text-decoration: none;
@@ -36,6 +38,39 @@ a{
 a:hover{
     color: #ff790f;
 }
+
+/*USERS.HTML*/
+.userlink{
+    color: #3A4145;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+/*BUSCADOR*/
+
+.s-input{
+    -webkit-appearance: none;
+    width: 50%;
+    margin: 0;
+    padding: .6em .7em;
+    border: 1px solid #bbc0c4;
+    border-radius: 3px;
+    box-shadow: 0 0 0 rgba(255,255,255,0);
+    font-size: 13px;
+    font-family: inherit;
+    line-height: 1.15384615;
+}
+
+.s-input {
+    padding-left: 32px;
+}
+
+/*NO HO SE NO HO HE FET JO*/
 .welcomeH1{
     color: #3A4145;
     font-size: 9em;
