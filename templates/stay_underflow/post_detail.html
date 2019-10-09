@@ -16,7 +16,7 @@
             <li> {{ ans.content }} </li>
         {% endfor %}
 
-        <a href="{% url 'new-answer' pk=object.pk %}" class="button">Nova resposta</a>
+        <a class="btn btn-outline-dark" href="{% url 'new-answer' pk=object.pk %}">Nova resposta</a>
     </div>
 
 {% endblock %}
