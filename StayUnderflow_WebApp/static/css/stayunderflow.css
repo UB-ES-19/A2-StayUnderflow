@@ -9,14 +9,12 @@
 
 .inputCercaHeader {
     width: 80%;
-    padding-top: 1;
 }
 .inputCercaHeader, .buttonCercaHeader {
     color: grey;
     overflow: visible;
-    background-color: #dfdfe1b8;
+    background-color: #D2D2D4;
     border: none;
-    height: 3em;
 }
 
 .row:after{
