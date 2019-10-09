@@ -7,11 +7,11 @@
     box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.75);
 }
 
-#inputCercaHeader {
+.inputCercaHeader {
     width: 80%;
     padding-top: 1;
 }
-#inputCercaHeader, #buttonCercaHeader {
+.inputCercaHeader, .buttonCercaHeader {
     color: grey;
     overflow: visible;
     background-color: #dfdfe1b8;
