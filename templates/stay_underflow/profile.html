@@ -7,15 +7,35 @@
 
 {% block content %}
     <div>
-        <h1>My profile</h1>
+        <h1>{{ username }}'s profile</h1>
     </div>
-
+    <br>
     <div class="profile">
         <div class="questions">
             QUESTIONS
+            {% if  posts%}
+                {% for post in posts %}
+                    <div>
+                        <p><b>{{post.0 }}</b></p>
+                        <p>{{ post.1 }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div>No posts from this user</div>
+            {% endif %}
         </div>
         <div class="questions">
             ANSWERS
+            {% if  answers%}
+                {% for answer in answers %}
+                    <div>
+                        <p><b>{{answer.0 }}</b></p>
+                        <p>{{ answer.1 }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div>No answers from this user</div>
+            {% endif %}
         </div>
     </div>
 
