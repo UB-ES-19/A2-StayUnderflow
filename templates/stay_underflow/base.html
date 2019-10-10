@@ -20,7 +20,7 @@
         <div class="row header">
 
             <div class="column">
-                <a href="{% url 'stayunderflow' %}">StayUnderflow</a>
+                <a class="aHeader" href="{% url 'stayunderflow' %}">StayUnderflow</a>
             </div>
             <div class="column cerca">
                 <form action="{% url 'users'%}" method="get">
@@ -28,7 +28,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text buttonCercaHeader" id="basic-addon1">
                             <button class="buttonCercaHeader" type="submit"> 
-                                <a class="fa fa-search"></a>
+                                <a class="aHeader fa fa-search"></a>
                             </button>
                         </span>
                       </div>
@@ -39,15 +39,15 @@
 
             {% if not user.is_authenticated %}
                 <div class="column">
-                    <b><a style="margin:5px" href="{%url 'login' %}"> Login </a></b>
+                    <b><a class="aHeader" style="margin:5px" href="{%url 'login' %}"> Login </a></b>
                     <b style="margin:5px"> | </b>
-                    <b><a style="margin:5px" href="{%url 'register' %}"> Register </a></b>
+                    <b><a class="aHeader" style="margin:5px" href="{%url 'register' %}"> Register </a></b>
                 </div>
             {% else %}
                 <div class="column">
-                    <b><a style="margin:5px" href="{%url 'profile' %}">{{ user }}</a></b>
+                    <b><a class="aHeader" style="margin:5px" href="{%url 'profile' %}">{{ user }}</a></b>
                     <b style="margin:5px"> | </b>
-                    <b><a style="margin:5px" href="{%url 'logout' %}">Logout</a></b>
+                    <b><a class="aHeader" style="margin:5px" href="{%url 'logout' %}">Logout</a></b>
                 </div>
             {% endif %}
 

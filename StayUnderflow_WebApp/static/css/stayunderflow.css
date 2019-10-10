@@ -42,12 +42,23 @@
 
 /*LINKS BARRA SUPERIOR*/
 a{
-    color: white;
+    color: black;
     text-decoration: none;
     font-weight: bold;
 }
 a:hover{
     color: #ff790f;
+    text-decoration: none;
+}
+/*LINKS BARRA SUPERIOR*/
+.aHeader{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+.aHeader:hover{
+    color: #ff790f;
+    text-decoration: none;
 }
 
 /*USERS.HTML*/
