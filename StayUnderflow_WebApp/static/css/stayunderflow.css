@@ -1,0 +1,133 @@
+/*MENU SUPERIOR*/
+.header{
+    background-color: rgba(0, 0, 0, 0.79);
+    padding-top: 1.6%;
+    color: white;
+    -webkit-box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.75);
+}
+
+.inputCercaHeader {
+    width: 80%;
+    font-size: 160%;
+}
+.inputCercaHeader, .buttonCercaHeader {
+    color: grey;
+    overflow: visible;
+    background-color: #D2D2D4;
+    border: none;
+}
+
+.row:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.column{
+    float: left;
+    width: 33.3%;
+    text-align: center;
+}
+
+.cerca{
+    font-size: 0.5em;
+}
+/*CONTINGUT*/
+.mainContent{
+    max-width: 75%;
+    margin: 50px auto;
+    /*margin: 25px auto;*/
+}
+
+/*LINKS BARRA SUPERIOR*/
+a{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+a:hover{
+    color: #ff790f;
+    text-decoration: none;
+}
+/*LINKS BARRA SUPERIOR*/
+.aHeader{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+.aHeader:hover{
+    color: #ff790f;
+    text-decoration: none;
+}
+
+/*USERS.HTML*/
+.userlink{
+    color: #3A4145;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+/*BUSCADOR*/
+
+.s-input{
+    -webkit-appearance: none;
+    width: 50%;
+    margin: 0;
+    padding: .6em .7em;
+    border: 1px solid #bbc0c4;
+    border-radius: 3px;
+    box-shadow: 0 0 0 rgba(255,255,255,0);
+    font-size: 13px;
+    font-family: inherit;
+    line-height: 1.15384615;
+}
+
+.s-input {
+    padding-left: 32px;
+}
+
+/*PROFILE.HTML*/
+.profile:after{
+    content: "";
+    display: table;
+    clear: both;
+    align-content: space-between !important;
+}
+
+.profile{
+    width: 100%;
+    align-content: space-between !important;
+}
+
+.questions{
+    width: 40%;
+}
+
+.content{
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 10px;
+    margin-bottom: 15px;
+    -webkit-box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.75);
+}
+
+/*NO HO SE NO HO HE FET JO*/
+.welcomeH1{
+    color: #3A4145;
+    font-size: 9em;
+    font-weight: 600;
+}
+.placeDescriptionP{
+    color: #7685A2;
+    font-size: 3.6em;
+}

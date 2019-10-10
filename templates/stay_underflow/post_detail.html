@@ -1,0 +1,22 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Stay Underflow</title>
+</head>
+
+{% extends 'stay_underflow/base.html' %}
+
+{% block content %}
+
+    <div>
+        <h1>{{ object.title }}</h1>
+        <p> By <a href="{%url 'profile' object.author %}">{{ object.author }}</a> on {{ object.date_posted|date:"j F, Y"}} at {{ object.date_posted|date:"G:i" }}</p>
+        <p>{{ object.content }}</p>
+
+        {% for ans in object.answer_set.all %}
+            <li> {{ ans.content }} </li>
+        {% endfor %}
+
+        <a class="btn btn-outline-dark" href="{% url 'new-answer' pk=object.pk %}">Nova resposta</a>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% load static %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+        <title>{% block title %}{% endblock %} </title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/stayunderflow.css'%}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/login.css'%}">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="row header">
+
+            <div class="column">
+                <a class="aHeader" href="{% url 'stayunderflow' %}">StayUnderflow</a>
+            </div>
+            <div class="column cerca">
+                <form action="{% url 'users'%}" method="get">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text buttonCercaHeader" id="basic-addon1">
+                            <button class="buttonCercaHeader" type="submit"> 
+                                <a class="aHeader fa fa-search"></a>
+                            </button>
+                        </span>
+                      </div>
+                      <input class="inputCercaHeader" name="username" type="text" placeholder="Busca usuaris..." autocomplete="off"/>
+                    </div>
+                </form>
+            </div>
+
+            {% if not user.is_authenticated %}
+                <div class="column">
+                    <b><a class="aHeader" style="margin:5px" href="{%url 'login' %}"> Login </a></b>
+                    <b style="margin:5px"> | </b>
+                    <b><a class="aHeader" style="margin:5px" href="{%url 'register' %}"> Register </a></b>
+                </div>
+            {% else %}
+                <div class="column">
+                    <b><a class="aHeader" style="margin:5px" href="{%url 'profile' %}">{{ user }}</a></b>
+                    <b style="margin:5px"> | </b>
+                    <b><a class="aHeader" style="margin:5px" href="{%url 'logout' %}">Logout</a></b>
+                </div>
+            {% endif %}
+
+
+        </div>
+
+        <div class="mainContent">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}" style="margin-top: 3%;">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% block content %}
+            
+            {% endblock %}
+        </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>

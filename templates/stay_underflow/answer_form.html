@@ -1,0 +1,21 @@
+<head>
+    <meta charset="UTF-8">
+    <title>New answer</title>
+</head>
+
+{% extends 'stay_underflow/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="contentReg">
+        <h1>New answer</h1>
+
+        <form action="" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+          <p style="text-align: center"><input class="btn btn-outline-dark" type="submit" value="Answer"></p>
+        </form>
+    </div>
+
+{% endblock %}
