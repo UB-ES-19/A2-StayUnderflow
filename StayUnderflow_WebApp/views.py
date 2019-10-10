@@ -6,7 +6,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from .forms import UserRegisterForm
 from django.contrib import messages
-from .models import Post
+from .models import Post, Answer, User
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -24,6 +24,40 @@ def register(request):
         form = UserRegisterForm()
     return render(request, 'stay_underflow/register.html', {
         'form': form,
+    })
+
+@login_required()
+def my_profile(request):
+    posts = [(x.title,x.content) for x in Post.objects.filter(author_id=request.user.pk)]
+    answers = [(x.post_id,x.content) for x in Answer.objects.filter(author_id=request.user.pk)]
+    answers = [(y,Post.objects.get(id=x).title) for x,y in answers]
+
+    return render(request, 'stay_underflow/profile.html', {
+        "username":request.user.username,
+        "posts": posts,
+        "answers" : answers
+    })
+
+def search_users(request):
+    username = request.GET["username"]
+
+    users_list = [x.username for x in User.objects.filter(username__icontains=username) if username != ""]
+
+    return render(request, 'stay_underflow/users.html', {
+            "user_list": users_list
+        })
+
+def other_profile(request,username=""):
+    id = User.objects.get(username=username).id
+
+    posts = [(x.title,x.content) for x in Post.objects.filter(author_id=id)]
+    answers = [(x.post_id, x.content) for x in Answer.objects.filter(author_id=id)]
+    answers = [(y, Post.objects.get(id=x).title) for x, y in answers]
+
+    return render(request, 'stay_underflow/profile.html', {
+        "username":username,
+        "posts": posts,
+        "answers": answers
     })
 
 class Stayunderflow(ListView):
@@ -45,20 +79,12 @@ class CreatePost(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-# métode login gestionat amb django
-""""def login_m(request):
-    if request.method == 'POST':
-        connection_form = AuthenticationForm(data=request.POST)
-        print(connection_form.as_p())
-        if connection_form.is_valid():
-            print("B")
-            username = connection_form.cleaned_data["username"]
-            password = connection_form.cleaned_data["password"]
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                print("A")
-                return HttpResponseRedirect(reverse("stayunderflow"))
-    else:
-        connection_form = AuthenticationForm()
-    return render(request, 'stay_underflow/login.html', {'form' : connection_form})"""
+class CreateAnswer(LoginRequiredMixin, CreateView):
+    model = Answer
+    fields = ['content']
+    template_name = 'stay_underflow/answer_form.html'
+
+    def form_valid(self, form):
+        form.instance.post = Post.objects.get(pk=self.kwargs['pk'])
+        form.instance.author = self.request.user
+        return super().form_valid(form)

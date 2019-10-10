@@ -11,23 +11,25 @@
 
     <div class="contentLog">
         <form method="POST">
-        <h1>Log in</h1>
         {% csrf_token %}
         {{ form|crispy }}
-        <button class="btn btn-outline-info" type="submit">Sign In</button>
-        <div style="margin-top: 1%">
-        <small class="text-muted">
-            Need an account? <a style="color: orangered; margin-left: 4px" href="{% url 'register' %}">Register now</a>
-        </small>
-        </div>
-        </form>
-        <div>
-            <a href="{% url 'social:begin' 'google-oauth2' %}" style="color: red">Sign up with Google</a>
-        </div>
+        <button class="btn btn-outline-dark" type="submit">Sign In</button>
+        </form> 
+        <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <a style="text-decoration: none" href="{% url 'social:begin' 'google-oauth2' %}">
+                <div class="g-signin2" data-onsuccess="onSignIn" data-theme="light"></div>
+        </a>
         <!-- No es podrà autenticar amb facebook fins que no sigui una connexió segura: https-->
         <!--<div>
             <a href="{% url 'social:begin' 'facebook' %}" style="color: blue">Sign up with Facebook</a>
         </div> -->
+    </div>
+
+    <div class="contentLog" style="background-color:transparent; margin-top : 5%;">
+            <small class="text-muted">
+                Need an account? <a style="margin-left: 4px" href="/register/">Register now</a>
+            </small>
     </div>
 
 {% endblock %}
