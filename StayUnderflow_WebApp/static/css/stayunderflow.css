@@ -1,7 +1,7 @@
 /*MENU SUPERIOR*/
 .header{
     background-color: rgba(0, 0, 0, 0.79);
-    padding: 20px;
+    padding-top: 1.6%;
     color: white;
     -webkit-box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.75);
@@ -10,6 +10,7 @@
 
 .inputCercaHeader {
     width: 80%;
+    font-size: 160%;
 }
 .inputCercaHeader, .buttonCercaHeader {
     color: grey;

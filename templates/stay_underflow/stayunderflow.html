@@ -9,9 +9,10 @@
 
     {% if user.is_authenticated %}
 
-    <h1>Preguntes principals</h1>
 
-    <div style="margin-top: 3%; text-align: right">
+    <h1 style="display:inliney-block">Preguntes principals</h1>
+
+    <div style="display:inline-block; float: right">
         <a class="btn btn-outline-dark" href="{% url 'new-post' %}">Nova pregunta</a>
     </div>
 
