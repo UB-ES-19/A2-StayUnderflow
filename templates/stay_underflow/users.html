@@ -10,7 +10,7 @@
     <br>
     {% if user_list %}
         {% for user in user_list %}
-            <p><b><a style="margin:5px" href="{%url 'profile' %}" class="userlink">{{ user }}</a></b></p>
+            <p><b><a style="margin:5px" href="{%url 'profile' user %}" class="userlink">{{ user }}</a></b></p>
         {% endfor %}
 
     {% else %}

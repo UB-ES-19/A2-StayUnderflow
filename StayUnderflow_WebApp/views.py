@@ -29,9 +29,11 @@ def register(request):
 @login_required()
 def my_profile(request):
     posts = [(x.title,x.content) for x in Post.objects.filter(author_id=request.user.pk)]
-    answers = [x.content for x in Answer.objects.filter(author_id=request.user.pk)]
+    answers = [(x.post_id,x.content) for x in Answer.objects.filter(author_id=request.user.pk)]
+    answers = [(y,Post.objects.get(id=x).title) for x,y in answers]
 
     return render(request, 'stay_underflow/profile.html', {
+        "username":request.user.username,
         "posts": posts,
         "answers" : answers
     })
@@ -49,9 +51,11 @@ def other_profile(request,username=""):
     id = User.objects.get(username=username).id
 
     posts = [(x.title,x.content) for x in Post.objects.filter(author_id=id)]
-    answers = [x.content for x in Answer.objects.filter(author_id=id)]
+    answers = [(x.post_id, x.content) for x in Answer.objects.filter(author_id=id)]
+    answers = [(y, Post.objects.get(id=x).title) for x, y in answers]
 
     return render(request, 'stay_underflow/profile.html', {
+        "username":username,
         "posts": posts,
         "answers": answers
     })

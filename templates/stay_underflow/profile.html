@@ -31,8 +31,8 @@
             {% if  answers%}
                 {% for answer in answers %}
                     <div >
-                        <p>Responded: <b>{{answer }}</b></p>
-                        <p>To:{{ answer }}</p>
+                        <p>Responded: <b>{{answer.0 }}</b></p>
+                        <p>To:{{ answer.1 }}</p>
                     </div>
                 {% endfor %}
             {% else %}
