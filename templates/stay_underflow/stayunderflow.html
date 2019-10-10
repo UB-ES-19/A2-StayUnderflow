@@ -8,11 +8,12 @@
 {% block content %}
 
     {% if user.is_authenticated %}
-    <div style="margin-top: 3%; text-align: right">
-        <a href="{% url 'new-post' %}" style="color:crimson;"><h3>Fer una pregunta a la comunitat</h3></a>
-    </div>
 
     <h1>Preguntes principals</h1>
+
+    <div style="margin-top: 3%; text-align: right">
+        <a class="btn btn-outline-dark" href="{% url 'new-post' %}">Nova pregunta</a>
+    </div>
 
     <div style="margin-top: 5%">
         {% for post in posts %}
@@ -30,9 +31,8 @@
             <div class="placeDescriptionP" >
                     <p>
                         A place where you can solve coding problems or doubts!
-                        <br><strong>Join the community!</strong>
+                        <br><strong>Join the community!</strong><a class="btn btn-outline-dark" style="margin-left:50%" href="{%url 'login' %}">Login</a>
                     </p>
-                    <a href="{%url 'login' %}" style="color:red">Login to start asking!</a>
             </div>
     </div>
 
