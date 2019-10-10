@@ -10,13 +10,13 @@
         <h1>{{ username }}'s profile</h1>
     </div>
     <br>
-    <div class="profile" >
-        <div class="questions">
+    <div class="profile">
+        <div class="questions" style="float: left">
             <div style="text-align: center">QUESTIONS</div>
         <br>
             {% if  posts%}
                 {% for post in posts %}
-                    <div >
+                    <div class="content">
                         <p><b>{{post.0 }}</b></p>
                         <p>{{ post.1 }}</p>
                     </div>
@@ -30,7 +30,7 @@
         <br>
             {% if  answers%}
                 {% for answer in answers %}
-                    <div >
+                    <div class="content">
                         <p>Responded: <b>{{answer.0 }}</b></p>
                         <p>To:{{ answer.1 }}</p>
                     </div>

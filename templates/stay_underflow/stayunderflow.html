@@ -16,7 +16,7 @@
 
     <div style="margin-top: 5%">
         {% for post in posts %}
-            <div>
+            <div class="content">
                 <a href="{% url 'post-detail' post.id %}" style="color: black"><h1>{{ post.title }}</h1></a>
                 <p> By {{ post.author }} on {{ post.date_posted|date:"j F, Y"}} at {{ post.date_posted|date:"G:i" }}</p>
                 <p>{{ post.content }}</p>
