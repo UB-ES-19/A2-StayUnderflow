@@ -9,7 +9,7 @@
 
     <div>
         <h1>{{ object.title }}</h1>
-        <p> By {{ object.author }} on {{ object.date_posted|date:"j F, Y"}} at {{ object.date_posted|date:"G:i" }}</p>
+        <p> By <a href="{%url 'profile' object.author %}">{{ object.author }}</a> on {{ object.date_posted|date:"j F, Y"}} at {{ object.date_posted|date:"G:i" }}</p>
         <p>{{ object.content }}</p>
 
         {% for ans in object.answer_set.all %}
