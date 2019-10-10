@@ -10,12 +10,13 @@
         <h1>{{ username }}'s profile</h1>
     </div>
     <br>
-    <div class="profile">
+    <div class="profile" >
         <div class="questions">
-            QUESTIONS
+            <div style="text-align: center">QUESTIONS</div>
+        <br>
             {% if  posts%}
                 {% for post in posts %}
-                    <div>
+                    <div >
                         <p><b>{{post.0 }}</b></p>
                         <p>{{ post.1 }}</p>
                     </div>
@@ -24,13 +25,14 @@
                 <div>No posts from this user</div>
             {% endif %}
         </div>
-        <div class="questions">
-            ANSWERS
+        <div class="questions" style="float: right">
+            <div style="text-align: center">ANSWERS</div>
+        <br>
             {% if  answers%}
                 {% for answer in answers %}
-                    <div>
-                        <p><b>{{answer.0 }}</b></p>
-                        <p>{{ answer.1 }}</p>
+                    <div >
+                        <p>Responded: <b>{{answer }}</b></p>
+                        <p>To:{{ answer }}</p>
                     </div>
                 {% endfor %}
             {% else %}

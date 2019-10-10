@@ -27,6 +27,7 @@
 .mainContent{
     max-width: 800px;
     margin: 50px auto;
+    /*margin: 25px auto;*/
 }
 
 /*LINKS BARRA SUPERIOR*/
@@ -75,12 +76,22 @@ a:hover{
     content: "";
     display: table;
     clear: both;
+    align-content: space-between;
 }
 
 .questions{
     float: left;
     width: 50%;
-    text-align: center;
+}
+
+.content{
+    border-radius: 5px;
+    padding: 10px;
+    padding-left: 22px;
+    margin-bottom: 15px;
+    -webkit-box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.75);
 }
 
 /*NO HO SE NO HO HE FET JO*/
