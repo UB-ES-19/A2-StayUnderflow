@@ -1,6 +1,7 @@
-.vscode/*
-venv/*
-__pycache__/*
-stay_underflow/__pycache__/*
-StayUnderflow_WebApp/__pycache__/*
-StayUnderflow_WebApp/migrations/*
+.vscode/
+venv/
+__pycache__/
+migrations/
+README.md
+*.pyc
+.idea/
