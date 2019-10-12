@@ -6,7 +6,7 @@ from .views import PostDetailView, Stayunderflow, CreatePost, CreateAnswer
 from . import views as views
 
 urlpatterns = [
-    url(r'^$', Stayunderflow.as_view(), name='stayunderflow'),
+    url(r'^$', views.home, name='stayunderflow_home'),
     url(r'^stayunderflow/$', Stayunderflow.as_view(), name='stayunderflow'),
     url(r'^register/$', views.register, name='register'),
     url(r'^login/$', auth_views.LoginView.as_view(template_name='stay_underflow/login.html'), name='login'),
@@ -17,5 +17,4 @@ urlpatterns = [
     path('stayunderflow/post/<int:pk>/', PostDetailView.as_view(), name='post-detail'), # pk serà un enter que contindrà el id del post clicat
     path('stayunderflow/post/new/', CreatePost.as_view(), name='new-post'),
     path('stayunderflow/post/<int:pk>/answer/', CreateAnswer.as_view(), name='new-answer'),
-    url(r'^recentquestions/$', Stayunderflow.as_view(), name='recentquestions'),
 ]

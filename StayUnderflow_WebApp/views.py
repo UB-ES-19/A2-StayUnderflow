@@ -11,6 +11,9 @@ from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
+def home(request):
+    return render(request, 'stay_underflow/stayunderflow_home.html')
+
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
