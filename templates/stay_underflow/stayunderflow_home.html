@@ -1,0 +1,25 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Stay Underflow</title>
+</head>
+
+{% extends 'stay_underflow/base.html' %}
+
+{% block content %}
+
+    <div>
+        <h1 class="welcomeH1">Welcome to StayUnderflow!</h1>
+            <div class="placeDescriptionP" >
+                    <p>
+                        A place where you can solve coding problems or doubts!
+                        {% if not user.is_authenticated %}
+                        <br><strong>Join the community!</strong>
+                        {% else %}
+                        <br><strong>{{ user }} do you have any questions?</strong>
+                        {% endif %}
+                    </p>
+            </div>
+    </div>
+
+
+{% endblock %}

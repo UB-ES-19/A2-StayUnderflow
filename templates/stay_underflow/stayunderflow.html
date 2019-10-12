@@ -7,13 +7,14 @@
 
 {% block content %}
 
-    {% if user.is_authenticated %}
-
-
     <h1 style="display:inline-block">Preguntes principals</h1>
 
     <div style="display:inline-block; float: right">
-        <a class="btn btn-outline-dark" href="{% url 'new-post' %}">Nova pregunta</a>
+        {% if user.is_authenticated %}
+            <a class="btn btn-outline-dark" href="{% url 'new-post' %}">Nova pregunta</a>
+        {% else %}
+            <a class="btn btn-outline-dark" href="{% url 'register' %}">Nova pregunta</a>
+        {% endif %}
     </div>
 
     <div style="margin-top: 5%">
@@ -26,17 +27,5 @@
         {% endfor %}
     </div>
 
-    {% else %}
-    <div>
-        <h1 class="welcomeH1">Welcome to StayUnderflow!</h1>
-            <div class="placeDescriptionP" >
-                    <p>
-                        A place where you can solve coding problems or doubts!
-                        <br><strong>Join the community!</strong><a class="btn btn-outline-dark" style="margin-left:50%" href="{%url 'login' %}">Login</a>
-                    </p>
-            </div>
-    </div>
-
-    {% endif %}
 
 {% endblock %}
