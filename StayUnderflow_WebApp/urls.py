@@ -17,4 +17,5 @@ urlpatterns = [
     path('stayunderflow/post/<int:pk>/', PostDetailView.as_view(), name='post-detail'), # pk serà un enter que contindrà el id del post clicat
     path('stayunderflow/post/new/', CreatePost.as_view(), name='new-post'),
     path('stayunderflow/post/<int:pk>/answer/', CreateAnswer.as_view(), name='new-answer'),
+    path('stayunderflow/post/edit/', views.update_my_profile, name='edit_profile'),
 ]
