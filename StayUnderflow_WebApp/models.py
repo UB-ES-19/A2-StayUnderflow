@@ -34,3 +34,10 @@ class Answer(models.Model):
 
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk': self.post.pk})
+
+class Perfil(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+
+    def __str__(self):
+        return f'Perfil de {self.user.username}'

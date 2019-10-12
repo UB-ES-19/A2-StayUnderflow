@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib import messages
 from .models import Post, Answer, User
 from django.views.generic import ListView, DetailView, CreateView
@@ -40,6 +40,23 @@ def my_profile(request):
         "posts": posts,
         "answers" : answers
     })
+
+@login_required()
+def update_my_profile(request):
+    if request.method == 'POST':
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        image_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.perfil)
+        if user_form.is_valid() and image_form.is_valid():
+            user_form.save()
+            image_form.save()
+            return redirect('profile')
+    else:
+        user_form = UserUpdateForm(instance=request.user)
+        image_form = ProfileUpdateForm(instance=request.user.perfil)
+
+    context = {'user_form': user_form, 'image_form': image_form}
+
+    return render(request, 'stay_underflow/edit_profile.html', context)
 
 def search_users(request):
     username = request.GET["username"]
