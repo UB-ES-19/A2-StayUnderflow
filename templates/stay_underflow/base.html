@@ -37,6 +37,10 @@
                 </form>
             </div>
 
+            <div class="column">
+                <a class="aHeader" href="{% url 'recentquestions' %}">Recent questions</a>
+            </div>
+
             {% if not user.is_authenticated %}
                 <div class="column">
                     <b><a class="aHeader" style="margin:5px" href="{%url 'login' %}"> Login </a></b>

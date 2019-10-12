@@ -7,36 +7,15 @@
 
 {% block content %}
 
-    {% if user.is_authenticated %}
-
-
-    <h1 style="display:inline-block">Preguntes principals</h1>
-
-    <div style="display:inline-block; float: right">
-        <a class="btn btn-outline-dark" href="{% url 'new-post' %}">Nova pregunta</a>
-    </div>
-
-    <div style="margin-top: 5%">
-        {% for post in posts %}
-            <div class="content">
-                <a href="{% url 'post-detail' post.id %}" style="color: black"><h1>{{ post.title }}</h1></a>
-                <p> By <a href="{%url 'profile' post.author %}">{{ post.author }}</a> on {{ post.date_posted|date:"j F, Y"}} at {{ post.date_posted|date:"G:i" }}</p>
-                <p>{{ post.content }}</p>
-            </div>
-        {% endfor %}
-    </div>
-
-    {% else %}
     <div>
         <h1 class="welcomeH1">Welcome to StayUnderflow!</h1>
             <div class="placeDescriptionP" >
                     <p>
                         A place where you can solve coding problems or doubts!
-                        <br><strong>Join the community!</strong><a class="btn btn-outline-dark" style="margin-left:50%" href="{%url 'login' %}">Login</a>
+                        <br><strong>Join the community!</strong>
                     </p>
             </div>
     </div>
 
-    {% endif %}
 
 {% endblock %}
