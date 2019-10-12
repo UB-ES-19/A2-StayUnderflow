@@ -155,3 +155,11 @@ SOCIAL_AUTH_FACEBOOK_SECRET = 'a285f7d1bfe50efaa7974f3a00d4e11b'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# gmail user and pass for password reset
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'stayunderflow@gmail.com'
+EMAIL_HOST_PASSWORD = 'stayunderflow1234'
