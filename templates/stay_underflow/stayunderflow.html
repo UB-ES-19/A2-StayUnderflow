@@ -20,9 +20,15 @@
     <div style="margin-top: 5%">
         {% for post in posts %}
             <div class="content">
-                <a href="{% url 'post-detail' post.id %}" style="color: black"><h1>{{ post.title }}</h1></a>
-                <p> By <a href="{%url 'profile' post.author %}">{{ post.author }}</a> on {{ post.date_posted|date:"j F, Y"}} at {{ post.date_posted|date:"G:i" }}</p>
-                <p>{{ post.content }}</p>
+                <div class="media">
+                    <img class="rounded-circle" src="{{ post.author.perfil.image.url }}" width="80" height="80">
+                    <div class="media-body" style="margin-left: 1%;">
+                        <a href="{% url 'post-detail' post.id %}" style="color: black"><h1>{{ post.title }}</h1></a>
+                        <p class="text-secondary">By <a href="{%url 'profile' post.author %}">{{ post.author }}</a> on {{ post.date_posted|date:"j F, Y"}} at {{ post.date_posted|date:"G:i" }}</p>
+                        <p>{{ post.content }}</p>
+                    </div>
+                </div>
+                
             </div>
         {% endfor %}
     </div>
