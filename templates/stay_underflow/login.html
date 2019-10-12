@@ -13,6 +13,7 @@
         <form method="POST">
         {% csrf_token %}
         {{ form|crispy }}
+        <a href="{% url 'password_reset' %}"><small>Click here if you forget your password</small></a>
         <button class="btn btn-outline-dark" type="submit">Sign In</button>
         </form> 
         <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
