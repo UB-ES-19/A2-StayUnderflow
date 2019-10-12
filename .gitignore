@@ -1,6 +1,6 @@
 .vscode/*
 venv/*
-__pycache__/*
+*/__pycache__/*
 stay_underflow/__pycache__/*
 StayUnderflow_WebApp/__pycache__/*
 StayUnderflow_WebApp/migrations/*
