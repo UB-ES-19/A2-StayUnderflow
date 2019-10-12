@@ -1,0 +1,4 @@
+django
+django-crispy-forms
+social-auth-app-django
+psycopg2
