@@ -24,6 +24,7 @@
             <div class="content">
                 <p>By <a href="{%url 'profile' ans.author %}">{{ ans.author }}</a> on {{ ans.date_posted|date:"j F, Y"}} at {{ ans.date_posted|date:"G:i" }}</p>
                 <p>{{ ans.content }}</p>
+                <p>Likes: {{ ans.likes.count }} <a href="{% url 'post-like' post.id ans.id %}" style="color: black">Like</a></p>
             </div>
         {% endfor %}
 

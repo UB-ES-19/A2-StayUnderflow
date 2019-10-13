@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4a8f624f-e43a-40c9-8cf1-95f21bd5ae7d" name="Default Changelist" comment="Workspace without venv">
+      <change beforePath="$PROJECT_DIR$/StayUnderflow_WebApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/StayUnderflow_WebApp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StayUnderflow_WebApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/StayUnderflow_WebApp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StayUnderflow_WebApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/StayUnderflow_WebApp/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/stay_underflow/post_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/stay_underflow/post_detail.html" afterDir="false" />
+    </list>
+    <list id="10d20e43-51ae-41dd-88c5-277abeb0c507" name="dataSources" comment="dataSources" />
+    <list id="063a3a32-8b06-4116-a04e-dd663330135a" name="Revert &quot;dataSources&quot;" comment="Revert &quot;dataSources&quot;&#10;&#10;This reverts commit e2dc325c" />
+    <list id="b29aa18a-1185-4cf4-b4f6-3ec93d7f3795" name="Workspace without venv" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="CSS File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>test_login</find>
+      <find>center</find>
+      <find>home</find>
+      <find>con</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="ProfilePage/frontend" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="681" />
+    <option name="y" value="36" />
+    <option name="width" value="1266" />
+    <option name="height" value="783" />
+  </component>
+  <component name="ProjectId" id="1R3re5QqR8uWJ06mmJIqC9plA3a" />
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/StayUnderflow_WebApp/static/images" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Arnau\Documents\GitHub\A2-StayUnderflow\templates\stay_underflow" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/StayUnderflow_WebApp/static/images" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Django server.A2-StayUnderflow">
+    <configuration name="A2-StayUnderflow" type="Python.DjangoServer" factoryName="Django server">
+      <module name="A2-StayUnderflow" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="stay_underflow.settings" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/bin/python3.7" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="stay_underflow" type="Python.DjangoServer" factoryName="Django server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="stay_underflow.settings" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/bin/python3.7" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="http://127.0.0.1:8000/" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Django server.A2-StayUnderflow" />
+      <item itemvalue="Django server.stay_underflow" />
+    </list>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand />
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4a8f624f-e43a-40c9-8cf1-95f21bd5ae7d" name="Default Changelist" comment="" />
+      <created>1568906955221</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1568906955221</updated>
+      <workItem from="1568906956850" duration="1503000" />
+      <workItem from="1569062814467" duration="637000" />
+      <workItem from="1569078133605" duration="2933000" />
+      <workItem from="1569247505009" duration="277000" />
+      <workItem from="1569251874471" duration="264000" />
+      <workItem from="1569275212559" duration="3975000" />
+      <workItem from="1569279543834" duration="1564000" />
+      <workItem from="1569403378900" duration="9173000" />
+      <workItem from="1569424347568" duration="990000" />
+      <workItem from="1569425827545" duration="49000" />
+      <workItem from="1569428346954" duration="396000" />
+      <workItem from="1569428913127" duration="502000" />
+      <workItem from="1569490028065" duration="2058000" />
+      <workItem from="1569857512085" duration="334000" />
+      <workItem from="1570115145135" duration="1150000" />
+      <workItem from="1570388929454" duration="4132000" />
+      <workItem from="1570461624228" duration="5403000" />
+      <workItem from="1570548039875" duration="253000" />
+      <workItem from="1570612982582" duration="3822000" />
+      <workItem from="1570635984828" duration="901000" />
+      <workItem from="1570693187490" duration="858000" />
+      <workItem from="1570697046438" duration="2990000" />
+      <workItem from="1570980442714" duration="723000" />
+      <workItem from="1570981183474" duration="616000" />
+      <workItem from="1570981816798" duration="11946000" />
+    </task>
+    <task id="LOCAL-00001" summary="dataSources">
+      <created>1569097550879</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1569097550879</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Workspace without venv">
+      <created>1569097680177</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1569097680177</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="dataSources" />
+    <MESSAGE value="Workspace without venv" />
+    <option name="LAST_COMMIT_MESSAGE" value="Workspace without venv" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/StayUnderflow_WebApp/views.py</url>
+          <line>85</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
