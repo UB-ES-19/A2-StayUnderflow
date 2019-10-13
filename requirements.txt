@@ -3,3 +3,4 @@ django-crispy-forms
 social-auth-app-django
 psycopg2
 Pillow
+django-taggit
