@@ -1,6 +1,8 @@
 from django.db import models
 from django import forms
 from django.contrib.auth.models import User
+from taggit.managers import TaggableManager
+
 from utils.time import get_time_local
 from django.urls import reverse
 
@@ -11,6 +13,8 @@ class Post(models.Model):
     # documentació https://docs.djangoproject.com/en/2.2/ref/templates/builtins/#date
     date_posted = models.DateTimeField(default=get_time_local()) # en el cas de no posar data es posa la data actual del sistema per defecte
     author = models.ForeignKey(User, on_delete= models.CASCADE) # quan s'elimina un usuari també s'eliminen els seus posts
+
+    tags = TaggableManager()
 
     def __str__(self):
         return self.title

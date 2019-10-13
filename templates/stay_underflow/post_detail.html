@@ -14,6 +14,7 @@
                 <div class="media-body" style="margin-left: 1%;">
                     <h1>{{ object.title }}</h1>
                     <p class="text-secondary">By <a href="{%url 'profile' object.author %}">{{ object.author }}</a> on {{ object.date_posted|date:"j F, Y"}} at {{ object.date_posted|date:"G:i" }}</p>
+                     <p>Tags: {% for tag in object.tags.all %} {{ tag.name }} {% endfor %}</p>
                     <p>{{ object.content }}</p>
                 </div>
             </div>

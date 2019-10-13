@@ -92,7 +92,7 @@ class PostDetailView(DetailView):
 
 class CreatePost(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'content']
+    fields = ['title', 'content', 'tags']
     template_name = 'stay_underflow/post_form.html'
 
     def form_valid(self, form):
