@@ -86,6 +86,13 @@ class Stayunderflow(ListView):
     context_object_name = 'posts' # llista que utilitza (a la view) per ordenar
     ordering = ['-date_posted'] # ordena els posts de data més recent a menys
 
+class PostsByTag(ListView):
+    template_name = 'stay_underflow/stayunderflow.html'
+    context_object_name = 'posts'
+
+    def get_queryset(self):
+        return Post.objects.filter(tags__name__in=[self.kwargs['tag']])
+
 class PostDetailView(DetailView):
     model = Post
     template_name = 'stay_underflow/post_detail.html'
