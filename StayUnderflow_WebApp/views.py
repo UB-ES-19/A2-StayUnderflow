@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import auth
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
@@ -19,10 +20,13 @@ def register(request):
         form = UserRegisterForm(request.POST)
         print(form.as_p())
         if form.is_valid():
-            new_user = form.save()
+            form.save()
             username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
             messages.success(request, f'Account succesfuly created for {username}!')
-            return redirect('stayunderflow')
+            user = auth.authenticate(username=username,password=password)
+            login(request,user,backend='django.contrib.auth.backends.ModelBackend')
+            return redirect('profile')
     else:
         form = UserRegisterForm()
     return render(request, 'stay_underflow/register.html', {
