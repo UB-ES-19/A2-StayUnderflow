@@ -24,6 +24,13 @@ class Post(models.Model):
         return reverse('post-detail', kwargs={'pk': self.pk})
 
 
+class Like(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def get_absolute_url(self,pk):
+        return reverse('post-detail', kwargs={'pk': pk})
+
+
 # Classe per a guardar la informació de cada resposta
 class Answer(models.Model):
 
@@ -36,6 +43,9 @@ class Answer(models.Model):
     # El post al qual responem
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
+    likes = models.ManyToManyField(Like)
+
+
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk': self.post.pk})
 
@@ -45,3 +55,4 @@ class Perfil(models.Model):
 
     def __str__(self):
         return f'Perfil de {self.user.username}'
+

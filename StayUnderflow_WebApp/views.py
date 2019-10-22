@@ -7,7 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib import messages
-from .models import Post, Answer, User
+from .models import Post, Answer, User, Like
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -83,6 +83,24 @@ def other_profile(request,username=""):
         "posts": posts,
         "answers": answers
     })
+
+@login_required()
+def like_post(request,pk,id):
+    an = Answer.objects.get(id = id)
+    likes = an.likes.filter(author = request.user.id)
+
+    if likes.__len__() == 0:
+        l = Like(author=User.objects.get(id=request.user.id))
+        l.save()
+        an.likes.add(l)
+    else:
+        an.likes.remove(likes[0])
+        likes[0].delete()
+
+    #return reverse('post-detail', kwargs={'pk':pk})
+
+    return render(request, 'stay_underflow/stayunderflow_home.html', {})
+
 
 class Stayunderflow(ListView):
     model =  Post # classe que agafa per anar a buscar les dades
