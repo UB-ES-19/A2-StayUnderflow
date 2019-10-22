@@ -10,6 +10,7 @@ from django.contrib import messages
 from .models import Post, Answer, User, Like
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+import operator
 
 # Create your views here.
 def home(request):
@@ -132,6 +133,11 @@ class PostDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(PostDetailView,self).get_context_data(**kwargs)
         context['owner'] = self.request.user.id == context['post'].author_id
+
+        x = [(x,x.likes.count()) for x in context['post'].answer_set.all()]
+        x.sort(key = lambda x:x[1], reverse = True)
+        context['answers'] = [y[0] for y in x]
+
         return context
 
 class CreatePost(LoginRequiredMixin, CreateView):

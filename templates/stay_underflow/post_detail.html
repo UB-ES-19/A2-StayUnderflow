@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        {% for ans in object.answer_set.all %}
+        {% for ans in answers %}
             <div class="content">
                 <p>By <a href="{%url 'profile' ans.author %}">{{ ans.author }}</a> on {{ ans.date_posted|date:"j F, Y"}} at {{ ans.date_posted|date:"G:i" }}</p>
                 <p>{{ ans.content }}</p>
