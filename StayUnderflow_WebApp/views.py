@@ -85,7 +85,7 @@ def other_profile(request,username=""):
     })
 
 @login_required()
-def like_post(request,pk,id):
+def like_ans(request,pk,id):
     an = Answer.objects.get(id = id)
     likes = an.likes.filter(author = request.user.id)
 
@@ -96,6 +96,18 @@ def like_post(request,pk,id):
     else:
         an.likes.remove(likes[0])
         likes[0].delete()
+
+    return redirect('/stayunderflow/post/' + str(pk) + '/')
+
+@login_required()
+def best_ans(request,pk,id):
+    an = Answer.objects.get(id = id)
+
+    if an.best:
+        an.best = False
+    else:
+        an.best = True
+    an.save()
 
     return redirect('/stayunderflow/post/' + str(pk) + '/')
 
@@ -116,6 +128,11 @@ class PostsByTag(ListView):
 class PostDetailView(DetailView):
     model = Post
     template_name = 'stay_underflow/post_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(PostDetailView,self).get_context_data(**kwargs)
+        context['owner'] = self.request.user.id == context['post'].author_id
+        return context
 
 class CreatePost(LoginRequiredMixin, CreateView):
     model = Post

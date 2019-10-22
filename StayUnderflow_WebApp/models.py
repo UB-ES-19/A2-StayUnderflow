@@ -43,6 +43,8 @@ class Answer(models.Model):
     # El post al qual responem
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
+    best = models.fields.BooleanField(default=False)
+
     likes = models.ManyToManyField(Like)
 
 
