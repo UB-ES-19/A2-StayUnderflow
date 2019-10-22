@@ -97,9 +97,7 @@ def like_post(request,pk,id):
         an.likes.remove(likes[0])
         likes[0].delete()
 
-    #return reverse('post-detail', kwargs={'pk':pk})
-
-    return render(request, 'stay_underflow/stayunderflow_home.html', {})
+    return redirect('/stayunderflow/post/' + str(pk) + '/')
 
 
 class Stayunderflow(ListView):
