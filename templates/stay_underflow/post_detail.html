@@ -24,17 +24,36 @@
             <div class="content">
                 <p>By <a href="{%url 'profile' ans.author %}">{{ ans.author }}</a> on {{ ans.date_posted|date:"j F, Y"}} at {{ ans.date_posted|date:"G:i" }}</p>
                 <p>{{ ans.content }}</p>
-                {% if owner %}
-                    {% if ans.best %}
-                        <a class="btn btn-outline-dark" href="{% url 'ans-best' post.id ans.id %}">Desmarcar com a bona</a>
+
+                <div>
+                    {% if owner %}
+                        <p class="like" style="width: 50%; float: right;">
+                            <a href="{% url 'ans-like' post.id ans.id %}" class="fa fa-thumbs-up">{{ ans.likes.count }}</a>
+                            <!--a href="{#% url 'post-like' post.id ans.id %#}" class="fa fa-thumbs-down">{#  #}{ ans.dislikes.count }}</a-->
+                        </p>
+                        <p style="width: 50%">
+                            {% if ans.best %}
+
+                                <label class="switch"><a href="{% url 'ans-best' post.id ans.id %}">
+                                    
+                                    <input type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                </a></label>
+                            {% else %}
+                                <label class="switch"><a href="{% url 'ans-best' post.id ans.id %}">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </a></label>
+                            {% endif %}
+                        </p>
                     {% else %}
-                        <a class="btn btn-outline-dark" href="{% url 'ans-best' post.id ans.id %}">Marcar com a bona</a>
+                        <p class="like">
+                            <a href="{% url 'ans-like' post.id ans.id %}" class="fa fa-thumbs-up">{{ ans.likes.count }}</a>
+                            <!--a href="{#% url 'post-like' post.id ans.id %#}" class="fa fa-thumbs-down">{#  #}{ ans.dislikes.count }}</a-->
+                        </p>
                     {% endif %}
-                {% endif %}
-                <p class="like">
-                    <a href="{% url 'ans-like' post.id ans.id %}" class="fa fa-thumbs-up">{{ ans.likes.count }}</a>
-                    <!--a href="{#% url 'post-like' post.id ans.id %#}" class="fa fa-thumbs-down">{#  #}{ ans.dislikes.count }}</a-->
-                </p>
+                </div>
+
             </div>
         {% endfor %}
 
