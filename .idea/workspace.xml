@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a8f624f-e43a-40c9-8cf1-95f21bd5ae7d" name="Default Changelist" comment="Workspace without venv">
-      <change beforePath="$PROJECT_DIR$/.idea/A2-StayUnderflow.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/A2-StayUnderflow.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StayUnderflow_WebApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/StayUnderflow_WebApp/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/stay_underflow/post_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/stay_underflow/post_detail.html" afterDir="false" />
     </list>
     <list id="10d20e43-51ae-41dd-88c5-277abeb0c507" name="dataSources" comment="dataSources" />
     <list id="063a3a32-8b06-4116-a04e-dd663330135a" name="Revert &quot;dataSources&quot;" comment="Revert &quot;dataSources&quot;&#10;&#10;This reverts commit e2dc325c" />
@@ -33,6 +30,46 @@
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/stay_underflow/post_detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="39" column="50" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
+              <folding>
+                <element signature="e#1048#1085#0#HTML" expanded="true" />
+                <element signature="e#1259#1296#0#HTML" expanded="true" />
+                <element signature="e#1585#1603#0#HTML" expanded="true" />
+                <element signature="e#2108#2147#0#HTML" expanded="true" />
+                <element signature="e#2520#2559#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/StayUnderflow_WebApp/static/css/stayunderflow.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="127" column="22" selection-start-line="127" selection-start-column="22" selection-end-line="127" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/StayUnderflow_WebApp/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#59#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -55,8 +92,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="ProfilePage/frontend" />
+        <entry key="$PROJECT_DIR$" value="S3-US-03" />
       </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/StayUnderflow_WebApp/static/css/stayunderflow.css" />
+        <option value="$PROJECT_DIR$/templates/stay_underflow/post_detail.html" />
+      </list>
     </option>
   </component>
   <component name="IgnoredFileRootStore">
@@ -73,6 +118,54 @@
     <option name="height" value="783" />
   </component>
   <component name="ProjectId" id="1R3re5QqR8uWJ06mmJIqC9plA3a" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="A2-StayUnderflow" type="b2602c69:ProjectViewProjectNode" />
+              <item name="A2-StayUnderflow" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="A2-StayUnderflow" type="b2602c69:ProjectViewProjectNode" />
+              <item name="A2-StayUnderflow" type="462c0819:PsiDirectoryNode" />
+              <item name="StayUnderflow_WebApp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="A2-StayUnderflow" type="b2602c69:ProjectViewProjectNode" />
+              <item name="A2-StayUnderflow" type="462c0819:PsiDirectoryNode" />
+              <item name="StayUnderflow_WebApp" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="A2-StayUnderflow" type="b2602c69:ProjectViewProjectNode" />
+              <item name="A2-StayUnderflow" type="462c0819:PsiDirectoryNode" />
+              <item name="StayUnderflow_WebApp" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="A2-StayUnderflow" type="b2602c69:ProjectViewProjectNode" />
+              <item name="A2-StayUnderflow" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="A2-StayUnderflow" type="b2602c69:ProjectViewProjectNode" />
+              <item name="A2-StayUnderflow" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="stay_underflow" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
@@ -118,7 +211,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DJANGO_SETTINGS_MODULE" value="stay_underflow.settings" />
       </envs>
-      <option name="SDK_HOME" value="/usr/bin/python3.7" />
+      <option name="SDK_HOME" value="$USER_HOME$/anaconda3/envs/A2-StayUnderflow/bin/python" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -209,6 +302,8 @@
       <workItem from="1570981183474" duration="616000" />
       <workItem from="1570981816798" duration="11946000" />
       <workItem from="1571648933580" duration="4938000" />
+      <workItem from="1571830126415" duration="2839000" />
+      <workItem from="1571839277214" duration="7170000" />
     </task>
     <task id="LOCAL-00001" summary="dataSources">
       <created>1569097550879</created>
@@ -227,6 +322,36 @@
     <option name="localTasksCounter" value="3" />
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="10009000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="30" width="1920" height="1050" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2526596" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32901832" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout>
+  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
@@ -236,6 +361,12 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
@@ -272,5 +403,37 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/StayUnderflow_WebApp/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StayUnderflow_WebApp/static/css/stayunderflow.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="127" column="22" selection-start-line="127" selection-start-column="22" selection-end-line="127" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/stay_underflow/post_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="39" column="50" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
+          <folding>
+            <element signature="e#1048#1085#0#HTML" expanded="true" />
+            <element signature="e#1259#1296#0#HTML" expanded="true" />
+            <element signature="e#1585#1603#0#HTML" expanded="true" />
+            <element signature="e#2108#2147#0#HTML" expanded="true" />
+            <element signature="e#2520#2559#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

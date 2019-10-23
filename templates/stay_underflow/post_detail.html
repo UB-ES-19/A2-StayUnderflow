@@ -20,14 +20,45 @@
             </div>
         </div>
 
-        {% for ans in object.answer_set.all %}
+        {% for ans in answers %}
             <div class="content">
-                <p>By <a href="{%url 'profile' ans.author %}">{{ ans.author }}</a> on {{ ans.date_posted|date:"j F, Y"}} at {{ ans.date_posted|date:"G:i" }}</p>
+                {% if ans.best %}
+                    <p><i class="fa fa-check" aria-hidden="true" style="color: green; font-size: 50px"></i> By <a href="{%url 'profile' ans.author %}">{{ ans.author }}</a> on {{ ans.date_posted|date:"j F, Y"}} at {{ ans.date_posted|date:"G:i" }}</p>
+                {% else %}
+                    <p>By <a href="{%url 'profile' ans.author %}">{{ ans.author }}</a> on {{ ans.date_posted|date:"j F, Y"}} at {{ ans.date_posted|date:"G:i" }}</p>
+                {% endif %}
                 <p>{{ ans.content }}</p>
-                <p class="like">
-                    <a href="{% url 'post-like' post.id ans.id %}" class="fa fa-thumbs-up">{{ ans.likes.count }}</a>
-                    <!--a href="{#% url 'post-like' post.id ans.id %#}" class="fa fa-thumbs-down">{#  #}{ ans.dislikes.count }}</a-->
-                </p>
+
+                <div>
+                    {% if owner %}
+                        <p class="like" style="width: 50%; float: right;">
+                            <a href="{% url 'ans-like' post.id ans.id %}" class="fa fa-thumbs-up">{{ ans.likes.count }}</a>
+                            <!--a href="{#% url 'post-like' post.id ans.id %#}" class="fa fa-thumbs-down">{#  #}{ ans.dislikes.count }}</a-->
+                        </p>
+                        <p style="width: 50%">
+                            {% if ans.best %}
+                                Dismark as correct
+                                <label class="switch" style="float: left; margin-right: 10px"><a href="{% url 'ans-best' post.id ans.id %}">
+                                    <input type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                </a></label>
+                            {% else %}
+                                Mark as correct
+                                <label class="switch" style="float: left; margin-right: 10px"><a href="{% url 'ans-best' post.id ans.id %}">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </a></label>
+
+                            {% endif %}
+                        </p>
+                    {% else %}
+                        <p class="like">
+                            <a href="{% url 'ans-like' post.id ans.id %}" class="fa fa-thumbs-up">{{ ans.likes.count }}</a>
+                            <!--a href="{#% url 'post-like' post.id ans.id %#}" class="fa fa-thumbs-down">{#  #}{ ans.dislikes.count }}</a-->
+                        </p>
+                    {% endif %}
+                </div>
+
             </div>
         {% endfor %}
 
