@@ -22,7 +22,11 @@
 
         {% for ans in answers %}
             <div class="content">
-                <p>By <a href="{%url 'profile' ans.author %}">{{ ans.author }}</a> on {{ ans.date_posted|date:"j F, Y"}} at {{ ans.date_posted|date:"G:i" }}</p>
+                {% if ans.best %}
+                    <p><i class="fa fa-check" aria-hidden="true" style="color: green; font-size: 50px"></i> By <a href="{%url 'profile' ans.author %}">{{ ans.author }}</a> on {{ ans.date_posted|date:"j F, Y"}} at {{ ans.date_posted|date:"G:i" }}</p>
+                {% else %}
+                    <p>By <a href="{%url 'profile' ans.author %}">{{ ans.author }}</a> on {{ ans.date_posted|date:"j F, Y"}} at {{ ans.date_posted|date:"G:i" }}</p>
+                {% endif %}
                 <p>{{ ans.content }}</p>
 
                 <div>
@@ -33,17 +37,18 @@
                         </p>
                         <p style="width: 50%">
                             {% if ans.best %}
-
-                                <label class="switch"><a href="{% url 'ans-best' post.id ans.id %}">
-                                    
+                                Dismark as correct
+                                <label class="switch" style="float: left; margin-right: 10px"><a href="{% url 'ans-best' post.id ans.id %}">
                                     <input type="checkbox" checked>
                                     <span class="slider round"></span>
                                 </a></label>
                             {% else %}
-                                <label class="switch"><a href="{% url 'ans-best' post.id ans.id %}">
+                                Mark as correct
+                                <label class="switch" style="float: left; margin-right: 10px"><a href="{% url 'ans-best' post.id ans.id %}">
                                     <input type="checkbox">
                                     <span class="slider round"></span>
                                 </a></label>
+
                             {% endif %}
                         </p>
                     {% else %}

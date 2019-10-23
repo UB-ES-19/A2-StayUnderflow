@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a8f624f-e43a-40c9-8cf1-95f21bd5ae7d" name="Default Changelist" comment="Workspace without venv">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StayUnderflow_WebApp/static/css/stayunderflow.css" beforeDir="false" afterPath="$PROJECT_DIR$/StayUnderflow_WebApp/static/css/stayunderflow.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/stay_underflow/post_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/stay_underflow/post_detail.html" afterDir="false" />
     </list>
     <list id="10d20e43-51ae-41dd-88c5-277abeb0c507" name="dataSources" comment="dataSources" />
@@ -37,11 +35,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/stay_underflow/post_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="37" column="36" selection-start-line="37" selection-start-column="36" selection-end-line="37" selection-end-column="36" />
+            <state relative-caret-position="221">
+              <caret line="39" column="50" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
               <folding>
+                <element signature="e#1048#1085#0#HTML" expanded="true" />
                 <element signature="e#1259#1296#0#HTML" expanded="true" />
                 <element signature="e#1585#1603#0#HTML" expanded="true" />
+                <element signature="e#2108#2147#0#HTML" expanded="true" />
+                <element signature="e#2520#2559#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -302,7 +303,7 @@
       <workItem from="1570981816798" duration="11946000" />
       <workItem from="1571648933580" duration="4938000" />
       <workItem from="1571830126415" duration="2839000" />
-      <workItem from="1571839277214" duration="5258000" />
+      <workItem from="1571839277214" duration="7170000" />
     </task>
     <task id="LOCAL-00001" summary="dataSources">
       <created>1569097550879</created>
@@ -322,7 +323,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8097000" />
+    <option name="totallyTimeSpent" value="10009000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="30" width="1920" height="1050" extended-state="6" />
@@ -422,11 +423,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/stay_underflow/post_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="37" column="36" selection-start-line="37" selection-start-column="36" selection-end-line="37" selection-end-column="36" />
+        <state relative-caret-position="221">
+          <caret line="39" column="50" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
           <folding>
+            <element signature="e#1048#1085#0#HTML" expanded="true" />
             <element signature="e#1259#1296#0#HTML" expanded="true" />
             <element signature="e#1585#1603#0#HTML" expanded="true" />
+            <element signature="e#2108#2147#0#HTML" expanded="true" />
+            <element signature="e#2520#2559#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
