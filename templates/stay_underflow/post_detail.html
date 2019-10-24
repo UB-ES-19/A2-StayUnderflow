@@ -8,15 +8,65 @@
 {% block content %}
 
     <div>
-        <h1>{{ object.title }}</h1>
-        <p> By <a href="{%url 'profile' object.author %}">{{ object.author }}</a> on {{ object.date_posted|date:"j F, Y"}} at {{ object.date_posted|date:"G:i" }}</p>
-        <p>{{ object.content }}</p>
+        <div class="content">
+            <div class="media">
+                <img class="rounded-circle" src="{{ object.author.perfil.image.url }}" width="80" height="80">
+                <div class="media-body" style="margin-left: 1%;">
+                    <h1>{{ object.title }}</h1>
+                    <p class="text-secondary">By <a href="{%url 'profile' object.author %}">{{ object.author }}</a> on {{ object.date_posted|date:"j F, Y"}} at {{ object.date_posted|date:"G:i" }}</p>
+                     <p>Tags: {% for tag in object.tags.all %} <a href="{% url 'tag_post' tag.name %}"> {{ tag.name }}</a>{% endfor %}</p>
+                    <p>{{ object.content }}</p>
+                </div>
+            </div>
+        </div>
 
-        {% for ans in object.answer_set.all %}
-            <li> {{ ans.content }} </li>
+        {% for ans in answers %}
+            <div class="content">
+                {% if ans.best %}
+                    <p><i class="fa fa-check" aria-hidden="true" style="color: green; font-size: 50px"></i> By <a href="{%url 'profile' ans.author %}">{{ ans.author }}</a> on {{ ans.date_posted|date:"j F, Y"}} at {{ ans.date_posted|date:"G:i" }}</p>
+                {% else %}
+                    <p>By <a href="{%url 'profile' ans.author %}">{{ ans.author }}</a> on {{ ans.date_posted|date:"j F, Y"}} at {{ ans.date_posted|date:"G:i" }}</p>
+                {% endif %}
+                <p>{{ ans.content }}</p>
+
+                <div>
+                    {% if owner %}
+                        <p class="like" style="width: 50%; float: right;">
+                            <a href="{% url 'ans-like' post.id ans.id %}" class="fa fa-thumbs-up">{{ ans.likes.count }}</a>
+                            <!--a href="{#% url 'post-like' post.id ans.id %#}" class="fa fa-thumbs-down">{#  #}{ ans.dislikes.count }}</a-->
+                        </p>
+                        <p style="width: 50%">
+                            {% if ans.best %}
+                                Dismark as correct
+                                <label class="switch" style="float: left; margin-right: 10px"><a href="{% url 'ans-best' post.id ans.id %}">
+                                    <input type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                </a></label>
+                            {% else %}
+                                Mark as correct
+                                <label class="switch" style="float: left; margin-right: 10px"><a href="{% url 'ans-best' post.id ans.id %}">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </a></label>
+
+                            {% endif %}
+                        </p>
+                    {% else %}
+                        <p class="like">
+                            <a href="{% url 'ans-like' post.id ans.id %}" class="fa fa-thumbs-up">{{ ans.likes.count }}</a>
+                            <!--a href="{#% url 'post-like' post.id ans.id %#}" class="fa fa-thumbs-down">{#  #}{ ans.dislikes.count }}</a-->
+                        </p>
+                    {% endif %}
+                </div>
+
+            </div>
         {% endfor %}
 
-        <a class="btn btn-outline-dark" href="{% url 'new-answer' pk=object.pk %}">Nova resposta</a>
+        {% if user.is_authenticated %}
+            <a class="btn btn-outline-dark" href="{% url 'new-answer' pk=object.pk %}">Nova resposta</a>
+        {% else %}
+            <a class="btn btn-outline-dark" href="{% url 'register' %}">Nova resposta</a>
+        {% endif %}
     </div>
 
 {% endblock %}
