@@ -4,3 +4,4 @@ venv/*
 stay_underflow/__pycache__/*
 StayUnderflow_WebApp/__pycache__/*
 StayUnderflow_WebApp/migrations/*
+.idea/*
