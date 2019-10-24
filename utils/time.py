@@ -7,4 +7,4 @@ def get_time_online():
 
 def get_time_local():
     # Get the local time from the server clock
-    return timezone.now()
+    return timezone.now

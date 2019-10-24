@@ -20,7 +20,7 @@
         <div class="row header">
 
             <div class="column">
-                <a class="aHeader" href="{% url 'stayunderflow' %}">StayUnderflow</a>
+                <a class="aHeader" href="{% url 'stayunderflow_home' %}">StayUnderflow</a>
             </div>
             <div class="column cerca">
                 <form action="{% url 'users'%}" method="get">
@@ -35,6 +35,10 @@
                       <input class="inputCercaHeader" name="username" type="text" placeholder="Busca usuaris..." autocomplete="off"/>
                     </div>
                 </form>
+            </div>
+
+            <div class="column">
+                <a class="aHeader" href="{% url 'stayunderflow' %}">Recent questions</a>
             </div>
 
             {% if not user.is_authenticated %}
