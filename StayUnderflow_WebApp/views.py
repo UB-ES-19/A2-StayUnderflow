@@ -74,13 +74,14 @@ def search_users(request):
 
 def other_profile(request,username=""):
     id = User.objects.get(username=username).id
+    profile_user = User.objects.get(username=username)
 
     posts = [(x.title,x.content) for x in Post.objects.filter(author_id=id)]
     answers = [(x.post_id, x.content) for x in Answer.objects.filter(author_id=id)]
     answers = [(y, Post.objects.get(id=x).title) for x, y in answers]
 
-    return render(request, 'stay_underflow/profile.html', {
-        "username":username,
+    return render(request, 'stay_underflow/others_profile.html', {
+        "profile_user":profile_user,
         "posts": posts,
         "answers": answers
     })
