@@ -1,22 +1,26 @@
-<head>
-        <meta charset="UTF-8">
-        <title>Edit profile</title>
-    </head>
+{% extends 'stay_underflow/base.html' %}
     
-    {% extends 'stay_underflow/base.html' %}
+{% block title %}Edit profile{% endblock %}
     
-    {% load crispy_forms_tags %}
-    
-    {% block content %}
-        <div class="contentReg">
-            <h1>Edit Profile</h1>
-    
-            <form action="" method="post" enctype="multipart/form-data">
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="contentReg">
+        <h1>Edit Profile</h1>
+
+        <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ image_form|crispy }}
             {{ user_form|crispy }}
-              <p style="text-align: center"><input class="btn btn-outline-dark" type="submit" value="Update"></p>
-            </form>
-        </div>
+            <p style="text-align: center; width: 35%; margin-left: 9%; display: inline-block; margin-top: 2%;"><input class="btn btn-outline-dark" type="submit" value="Update"></p>
+            <p style="text-align: center; width: 35%; margin-right: 9%; float: right; margin-top: 2%;"><input class="btn btn-outline-dark" onclick="cancel()" value="Cancel"></p>
+        </form>
+    </div>
+
+    <script>
+        function cancel(){
+            window.location.href="{%url 'profile' %}";
+        }
+    </script>
     
-    {% endblock %}
+{% endblock %}
