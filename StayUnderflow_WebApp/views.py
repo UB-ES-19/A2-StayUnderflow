@@ -137,6 +137,14 @@ class Stayunderflow(ListView):
             context['posts'] = context['posts'].filter(done=True)
         elif filtre == "undone":
             context['posts'] = context['posts'].filter(done=False)
+        elif filtre == "unanswered":
+            llista = []
+            for post in context['posts']:
+                if len(post.answer_set.all()) == 0:
+                    llista.append(post)
+
+            context['posts'] = llista
+
 
         context['opcio'] = filtre
 
