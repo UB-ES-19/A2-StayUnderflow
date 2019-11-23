@@ -3,7 +3,15 @@
 {% block title %}Stay Underflow{% endblock %}
 
 {% block content %}
-
+<form action="/stayunderflow">
+  <select name="filter">
+    <option value="all">All</option>
+    <option value="done">Donete</option>
+    <option value="undone">Undonete</option>
+  </select>
+  <br><br>
+  <input type="submit">
+</form>
     <h1 style="display:inline-block">Preguntes principals</h1>
 
     <div style="display:inline-block; float: right">
