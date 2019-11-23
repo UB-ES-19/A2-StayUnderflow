@@ -104,12 +104,21 @@ def like_ans(request,pk,id):
 @login_required()
 def best_ans(request,pk,id):
     an = Answer.objects.get(id = id)
+    post = Post.objects.get(id = pk)
 
     if an.best:
         an.best = False
     else:
         an.best = True
+        post.done = True
     an.save()
+
+    all_answers = Answer.objects.filter(post_id=pk).filter(best=True)
+    if all_answers.__len__() == 0:
+        post.done = False
+
+    post.save()
+
 
     return redirect('/stayunderflow/post/' + str(pk) + '/')
 
@@ -119,6 +128,19 @@ class Stayunderflow(ListView):
     template_name = 'stay_underflow/stayunderflow.html' #pagina web que utilitza per a carregar la view
     context_object_name = 'posts' # llista que utilitza (a la view) per ordenar
     ordering = ['-date_posted'] # ordena els posts de data més recent a menys
+
+    def get_context_data(self, **kwargs):
+        context = super(Stayunderflow,self).get_context_data(**kwargs)
+        filtre = self.request.GET['filter']
+
+        if filtre == "done":
+            context['posts'] = context['posts'].filter(done=True)
+        elif filtre == "undone":
+            context['posts'] = context['posts'].filter(done=False)
+
+        context['opcio'] = filtre
+
+        return context
 
 class PostsByTag(ListView):
     template_name = 'stay_underflow/stayunderflow.html'
