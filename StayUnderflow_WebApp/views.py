@@ -131,9 +131,8 @@ class Stayunderflow(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(Stayunderflow,self).get_context_data(**kwargs)
-        #filtre = self.request.GET['filter']
-        context['done'] = context['posts'].filter(done=True)
 
+        context['done'] = context['posts'].filter(done=True)
         context['undone'] = context['posts'].filter(done=False)
         
         llista = []
@@ -142,8 +141,6 @@ class Stayunderflow(ListView):
                 llista.append(post)
 
         context['unanswered'] = llista
-
-
 
         return context
 
@@ -165,6 +162,19 @@ class PostDetailView(DetailView):
         x = [(x,x.likes.count()) for x in context['post'].answer_set.all()]
         x.sort(key = lambda x:x[1], reverse = True)
         context['answers'] = [y[0] for y in x]
+
+        post = Post.objects.get(id=context['post'].id)
+        post.views = post.views+1
+        post.save()
+
+        if post.views >= 10 and post.views < 25:
+            context["medalla"] = 1
+        elif post.views >= 25 and post.views < 100:
+            context["medalla"] = 2
+        elif post.views >= 100:
+            context["medalla"] = 3
+        else:
+            context["medalla"] = 0
 
         return context
 
