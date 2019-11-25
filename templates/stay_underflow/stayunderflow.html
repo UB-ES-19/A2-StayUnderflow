@@ -3,7 +3,6 @@
 {% block title %}Stay Underflow{% endblock %}
 
 {% block content %}
-
     <h1 style="display:inline-block">Preguntes principals</h1>
 
     <div style="display:inline-block; float: right">
@@ -14,8 +13,16 @@
         {% endif %}
     </div>
 
-    <div style="margin-top: 5%">
-        {% for post in posts %}
+
+    <div class="tab">
+      <button class="tablinks" onclick="openCity('All')">All</button>
+      <button class="tablinks" onclick="openCity('Done')">Done</button>
+      <button class="tablinks" onclick="openCity('Undone')">Undone</button>
+    </div>
+
+    <div id="All" class="tabcontent city" style="display: block">
+    {% if posts %}
+      {% for post in posts %}
             <div class="content">
                 <div class="media">
                     <img class="rounded-circle" src="{{ post.author.perfil.image.url }}" width="80" height="80">
@@ -25,9 +32,64 @@
                         <p>{{ post.content }}</p>
                     </div>
                 </div>
-                
+
             </div>
         {% endfor %}
+    {% else %}
+        There are no posts.
+    {% endif %}
     </div>
-    
+
+    <div id="Done" class="tabcontent city" style="display:none">
+    {% if done %}
+        {% for post in done %}
+            <div class="content">
+                <div class="media">
+                    <img class="rounded-circle" src="{{ post.author.perfil.image.url }}" width="80" height="80">
+                    <div class="media-body" style="margin-left: 1%;">
+                        <a href="{% url 'post-detail' post.id %}" style="color: black"><h1>{{ post.title }}</h1></a>
+                        <p class="text-secondary">By <a href="{%url 'profile' post.author %}">{{ post.author }}</a> on {{ post.date_posted|date:"j F, Y"}} at {{ post.date_posted|date:"G:i" }}</p>
+                        <p>{{ post.content }}</p>
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %}
+    {% else %}
+        There are no done posts.
+    {% endif %}
+    </div>
+
+    <div id="Undone" class="tabcontent city" style="display:none">
+    {% if undone %}
+        {% for post in undone %}
+            <div class="content">
+                <div class="media">
+                    <img class="rounded-circle" src="{{ post.author.perfil.image.url }}" width="80" height="80">
+                    <div class="media-body" style="margin-left: 1%;">
+                        <a href="{% url 'post-detail' post.id %}" style="color: black"><h1>{{ post.title }}</h1></a>
+                        <p class="text-secondary">By <a href="{%url 'profile' post.author %}">{{ post.author }}</a> on {{ post.date_posted|date:"j F, Y"}} at {{ post.date_posted|date:"G:i" }}</p>
+                        <p>{{ post.content }}</p>
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %}
+    {% else %}
+        There are no undone posts.
+    {% endif %}
+    </div>
+
+    <script>
+    function openCity(cityName) {
+      var i;
+      var x = document.getElementsByClassName("city");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      document.getElementById(cityName).style.display = "block";
+    }
+    </script>
+
+
 {% endblock %}

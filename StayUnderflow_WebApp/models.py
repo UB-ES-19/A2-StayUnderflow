@@ -14,6 +14,8 @@ class Post(models.Model):
     date_posted = models.DateTimeField(default=get_time_local()) # en el cas de no posar data es posa la data actual del sistema per defecte
     author = models.ForeignKey(User, on_delete= models.CASCADE) # quan s'elimina un usuari també s'eliminen els seus posts
 
+    done = models.fields.BooleanField(default=False)
+
     tags = TaggableManager()
 
     def __str__(self):
@@ -38,12 +40,13 @@ class Answer(models.Model):
     content = models.TextField()
     # Per defecte, la data del sistema
     date_posted = models.DateTimeField(default=get_time_local())
+
+    best = models.fields.BooleanField(default=False)
+
     # L'autor de la resposta
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     # El post al qual responem
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-
-    best = models.fields.BooleanField(default=False)
 
     likes = models.ManyToManyField(Like)
 
