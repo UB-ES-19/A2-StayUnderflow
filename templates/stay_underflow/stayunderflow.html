@@ -3,6 +3,7 @@
 {% block title %}Stay Underflow{% endblock %}
 
 {% block content %}
+
     <h1 style="display:inline-block">Preguntes principals</h1>
 
     <div style="display:inline-block; float: right">
@@ -15,10 +16,10 @@
 
 
     <div class="tab">
-      <button class="tablinks" onclick="openCity('All')">All</button>
-      <button class="tablinks" onclick="openCity('Done')">Done</button>
-      <button class="tablinks" onclick="openCity('Undone')">Undone</button>
-      <button class="tablinks" onclick="openCity('Unanswered')">Unanswered</button>
+      <button class="tablinks active" onclick="openCity(event, 'All')">All</button>
+      <button class="tablinks" onclick="openCity(event,  'Done')">Done</button>
+      <button class="tablinks" onclick="openCity(event, 'Undone')">Undone</button>
+      <button class="tablinks" onclick="openCity(event, 'Unanswered')">Unanswered</button>
     </div>
 
     <div id="All" class="tabcontent city" style="display: block">
@@ -102,13 +103,24 @@
     </div>
 
     <script>
-    function openCity(cityName) {
-      var i;
-      var x = document.getElementsByClassName("city");
-      for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
+    function openCity(evt, cityName) {
+      var i, tabcontent, tablinks;
+
+      // Get all elements with class="tabcontent" and hide them
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
       }
+
+      // Get all elements with class="tablinks" and remove the class "active"
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+
+      // Show the current tab, and add an "active" class to the button that opened the tab
       document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
     }
     </script>
 
