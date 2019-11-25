@@ -131,9 +131,8 @@ class Stayunderflow(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(Stayunderflow,self).get_context_data(**kwargs)
-        #filtre = self.request.GET['filter']
-        context['done'] = context['posts'].filter(done=True)
 
+        context['done'] = context['posts'].filter(done=True)
         context['undone'] = context['posts'].filter(done=False)
         
         llista = []
@@ -142,8 +141,6 @@ class Stayunderflow(ListView):
                 llista.append(post)
 
         context['unanswered'] = llista
-
-
 
         return context
 

@@ -18,6 +18,7 @@
       <button class="tablinks" onclick="openCity('All')">All</button>
       <button class="tablinks" onclick="openCity('Done')">Done</button>
       <button class="tablinks" onclick="openCity('Undone')">Undone</button>
+      <button class="tablinks" onclick="openCity('Unanswered')">Unanswered</button>
     </div>
 
     <div id="All" class="tabcontent city" style="display: block">
@@ -77,6 +78,26 @@
         {% endfor %}
     {% else %}
         There are no undone posts.
+    {% endif %}
+    </div>
+
+    <div id="Unanswered" class="tabcontent city" style="display:none">
+    {% if unanswered %}
+        {% for post in unanswered %}
+            <div class="content">
+                <div class="media">
+                    <img class="rounded-circle" src="{{ post.author.perfil.image.url }}" width="80" height="80">
+                    <div class="media-body" style="margin-left: 1%;">
+                        <a href="{% url 'post-detail' post.id %}" style="color: black"><h1>{{ post.title }}</h1></a>
+                        <p class="text-secondary">By <a href="{%url 'profile' post.author %}">{{ post.author }}</a> on {{ post.date_posted|date:"j F, Y"}} at {{ post.date_posted|date:"G:i" }}</p>
+                        <p>{{ post.content }}</p>
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %}
+    {% else %}
+        There are no unanswered posts.
     {% endif %}
     </div>
 
