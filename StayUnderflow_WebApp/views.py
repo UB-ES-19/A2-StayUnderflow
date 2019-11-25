@@ -132,21 +132,18 @@ class Stayunderflow(ListView):
     def get_context_data(self, **kwargs):
         context = super(Stayunderflow,self).get_context_data(**kwargs)
         #filtre = self.request.GET['filter']
-        filtre = "all"
-        if filtre == "done":
-            context['posts'] = context['posts'].filter(done=True)
-        elif filtre == "undone":
-            context['posts'] = context['posts'].filter(done=False)
-        elif filtre == "unanswered":
-            llista = []
-            for post in context['posts']:
-                if len(post.answer_set.all()) == 0:
-                    llista.append(post)
+        context['done'] = context['posts'].filter(done=True)
 
-            context['posts'] = llista
+        context['undone'] = context['posts'].filter(done=False)
+        
+        llista = []
+        for post in context['posts']:
+            if len(post.answer_set.all()) == 0:
+                llista.append(post)
+
+        context['unanswered'] = llista
 
 
-        context['opcio'] = filtre
 
         return context
 
