@@ -131,8 +131,8 @@ class Stayunderflow(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(Stayunderflow,self).get_context_data(**kwargs)
-        filtre = self.request.GET['filter']
-
+        #filtre = self.request.GET['filter']
+        filtre = "all"
         if filtre == "done":
             context['posts'] = context['posts'].filter(done=True)
         elif filtre == "undone":
