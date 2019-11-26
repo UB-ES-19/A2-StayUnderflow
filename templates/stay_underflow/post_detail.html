@@ -12,7 +12,20 @@
                     <h1>{{ object.title }}</h1>
                     <p class="text-secondary">By <a href="{%url 'profile' object.author %}">{{ object.author }}</a> on {{ object.date_posted|date:"j F, Y"}} at {{ object.date_posted|date:"G:i" }}</p>
                      <p>Tags: {% for tag in object.tags.all %} <a href="{% url 'tag_post' tag.name %}"> {{ tag.name }}</a>{% endfor %}</p>
-                    <p>{{ object.content }}</p>
+                    <p>{{ object.content }} </p>
+                    {% if views and medalla %}
+                    <p class="like" style="width: 50%; float: right;">
+                        {% if medalla == 0 %}
+                            {{ views }} views
+                        {% elif medalla == 1 %}
+                            <i class="fas fa-medal" style="color: #CD7F32; margin-right: 5px"></i>{{ views }} views
+                        {% elif medalla == 2 %}
+                            <i class="fas fa-medal" style="color: #C0C0C0; margin-right: 5px"></i>{{ views }} views
+                        {% elif medalla == 3 %}
+                            <i class="fas fa-medal" style="color: #D4AF37; margin-right: 5px"></i>{{ views }} views
+                        {% endif %}
+                    </p>
+                    {% endif %}
                 </div>
             </div>
         </div>
