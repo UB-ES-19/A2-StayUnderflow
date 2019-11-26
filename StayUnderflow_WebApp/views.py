@@ -134,12 +134,17 @@ class Stayunderflow(ListView):
 
         context['done'] = context['posts'].filter(done=True)
         context['undone'] = context['posts'].filter(done=False)
+
         
         llista = []
+        hot = []
         for post in context['posts']:
             if len(post.answer_set.all()) == 0:
                 llista.append(post)
+            if post.views >= 100:
+                hot.append(post)
 
+        context['hot'] = hot
         context['unanswered'] = llista
 
         return context
