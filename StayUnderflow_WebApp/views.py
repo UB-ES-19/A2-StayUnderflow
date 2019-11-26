@@ -173,6 +173,8 @@ class PostDetailView(DetailView):
         post.views = post.views+1
         post.save()
 
+        context['views'] = post.views
+
         if post.views >= 10 and post.views < 25:
             context["medalla"] = 1
         elif post.views >= 25 and post.views < 100:
