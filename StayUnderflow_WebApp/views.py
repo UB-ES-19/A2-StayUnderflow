@@ -36,7 +36,7 @@ def register(request):
 
 @login_required()
 def my_profile(request):
-    posts = [(x.title,x.content, x.id) for x in Post.objects.filter(author_id=request.user.pk)]
+    posts = [(x.title,x.content, x.id, x.views) for x in Post.objects.filter(author_id=request.user.pk)]
     answers = [(x.post_id,x.content) for x in Answer.objects.filter(author_id=request.user.pk)]
     answers = [(y,Post.objects.get(id=x).title,x) for x,y in answers]
 
@@ -76,7 +76,7 @@ def other_profile(request,username=""):
     id = User.objects.get(username=username).id
     profile_user = User.objects.get(username=username)
 
-    posts = [(x.title,x.content,x.id) for x in Post.objects.filter(author_id=id)]
+    posts = [(x.title,x.content,x.id, x.views) for x in Post.objects.filter(author_id=id)]
     answers = [(x.post_id, x.content) for x in Answer.objects.filter(author_id=id)]
     answers = [(y, Post.objects.get(id=x).title,x) for x, y in answers]
 
