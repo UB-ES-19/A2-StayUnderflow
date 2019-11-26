@@ -7,7 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib import messages
-from .models import Post, Answer, User, Like
+from .models import Post, Answer, User, Like, Perfil
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 import operator
@@ -119,6 +119,13 @@ def best_ans(request,pk,id):
 
     post.save()
 
+    perfil = request.user.perfil
+
+    if not perfil.recompensa:
+        perfil.reputation += 50
+        perfil.recompensa = True
+
+    perfil.save()
 
     return redirect('/stayunderflow/post/' + str(pk) + '/')
 
