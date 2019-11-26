@@ -119,15 +119,13 @@ def best_ans(request,pk,id):
 
     post.save()
 
-    perfil = Perfil.objects.get(user=request.user.id)
+    perfil = request.user.perfil
 
     if not perfil.recompensa:
         perfil.reputation += 50
         perfil.recompensa = True
 
     perfil.save()
-
-    print(post.author.perfil.recompensa)
 
     return redirect('/stayunderflow/post/' + str(pk) + '/')
 
