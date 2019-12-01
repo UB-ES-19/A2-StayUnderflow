@@ -25,8 +25,13 @@
             <div class="column">
                 <a class="aHeader" href="{% url 'stayunderflow_home' %}">StayUnderflow</a>
             </div>
+
             <div class="column cerca">
-                <form action="{% url 'users'%}" method="get">
+                <form action="{% url 'search' %}" method="get">
+                    <select name="search_options" id="search_o">
+                        <option value="tag_post" selected>Posts</option>
+                        <option value="users">Usuaris</option>
+                    </select>
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
                         <span class="input-group-text buttonCercaHeader" id="basic-addon1">
@@ -35,7 +40,7 @@
                             </button>
                         </span>
                       </div>
-                      <input class="inputCercaHeader" name="username" type="text" placeholder="Busca usuaris..." autocomplete="off"/>
+                      <input class="inputCercaHeader" name="search_v" type="text" placeholder="Busca usuaris o posts..." autocomplete="off"/>
                     </div>
                 </form>
             </div>
