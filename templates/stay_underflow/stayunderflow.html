@@ -28,8 +28,12 @@
             <div class="content">
                 <div class="media">
                     <div><img class="rounded-circle" src="{{ post.author.perfil.image.url }}" width="80" height="80">
-                        {% if post.author.perfil.recompensa %}
-                            <img src="/static/images/recompensa.png" class="center" style="margin-top: 13%;" title="Que és això?">
+                        {% if post.author.perfil.reputation > 100 and post.author.perfil.reputation <= 150 %}
+                        <img src="/static/images/recompensa_1.png" class="center" style="margin-top: 13%;" title="Que és això?">
+                        {% elif  post.author.perfil.reputation > 150 and post.author.perfil.reputation <= 200 %}
+                        <img src="/static/images/recompensa_2.png" class="center" style="margin-top: 13%;" title="Que és això?">
+                        {% elif post.author.perfil.reputation > 200 %}
+                        <img src="/static/images/recompensa_3.png" class="center" style="margin-top: 13%;" title="Que és això?">
                         {% endif %}
                     </div>
                     <div class="media-body" style="margin-left: 1%;">
@@ -63,8 +67,12 @@
             <div class="content">
                 <div class="media">
                     <div><img class="rounded-circle" src="{{ post.author.perfil.image.url }}" width="80" height="80">
-                        {% if post.author.perfil.recompensa %}
-                            <img src="/static/images/recompensa.png" class="center" style="margin-top: 13%;" title="Que és això?">
+                        {% if post.author.perfil.reputation > 100 and post.author.perfil.reputation <= 150 %}
+                        <img src="/static/images/recompensa_1.png" class="center" style="margin-top: 13%;" title="Que és això?">
+                        {% elif  post.author.perfil.reputation > 150 and post.author.perfil.reputation <= 200 %}
+                        <img src="/static/images/recompensa_2.png" class="center" style="margin-top: 13%;" title="Que és això?">
+                        {% elif post.author.perfil.reputation > 200 %}
+                        <img src="/static/images/recompensa_3.png" class="center" style="margin-top: 13%;" title="Que és això?">
                         {% endif %}
                     </div>
                     <div class="media-body" style="margin-left: 1%;">
@@ -98,8 +106,12 @@
             <div class="content">
                 <div class="media">
                     <div><img class="rounded-circle" src="{{ post.author.perfil.image.url }}" width="80" height="80">
-                        {% if post.author.perfil.recompensa %}
-                            <img src="/static/images/recompensa.png" class="center" style="margin-top: 13%;" title="Que és això?">
+                        {% if post.author.perfil.reputation > 100 and post.author.perfil.reputation <= 150 %}
+                        <img src="/static/images/recompensa_1.png" class="center" style="margin-top: 13%;" title="Que és això?">
+                        {% elif  post.author.perfil.reputation > 150 and post.author.perfil.reputation <= 200 %}
+                        <img src="/static/images/recompensa_2.png" class="center" style="margin-top: 13%;" title="Que és això?">
+                        {% elif post.author.perfil.reputation > 200 %}
+                        <img src="/static/images/recompensa_3.png" class="center" style="margin-top: 13%;" title="Que és això?">
                         {% endif %}
                     </div>
                     <div class="media-body" style="margin-left: 1%;">
@@ -133,8 +145,12 @@
             <div class="content">
                 <div class="media">
                     <div><img class="rounded-circle" src="{{ post.author.perfil.image.url }}" width="80" height="80">
-                        {% if post.author.perfil.recompensa %}
-                            <img src="/static/images/recompensa.png" class="center" style="margin-top: 13%;" title="Que és això?">
+                        {% if post.author.perfil.reputation > 100 and post.author.perfil.reputation <= 150 %}
+                        <img src="/static/images/recompensa_1.png" class="center" style="margin-top: 13%;" title="Que és això?">
+                        {% elif  post.author.perfil.reputation > 150 and post.author.perfil.reputation <= 200 %}
+                        <img src="/static/images/recompensa_2.png" class="center" style="margin-top: 13%;" title="Que és això?">
+                        {% elif post.author.perfil.reputation > 200 %}
+                        <img src="/static/images/recompensa_3.png" class="center" style="margin-top: 13%;" title="Que és això?">
                         {% endif %}
                     </div>
                     <div class="media-body" style="margin-left: 1%;">
