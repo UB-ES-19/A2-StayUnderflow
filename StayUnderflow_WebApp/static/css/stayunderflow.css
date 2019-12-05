@@ -9,7 +9,7 @@
 }
 
 .inputCercaHeader {
-    width: 80%;
+    width: 65%;
     font-size: 160%;
 }
 .inputCercaHeader, .buttonCercaHeader {
@@ -17,6 +17,13 @@
     overflow: visible;
     background-color: #D2D2D4;
     border: none;
+    font-size: 170%;
+}
+#search_o {
+  padding-left: 2%;
+  -webkit-appearance:none;
+  padding-right: 4%;
+  font-size: 160%;
 }
 
 .row:after{

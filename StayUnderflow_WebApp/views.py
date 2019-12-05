@@ -63,14 +63,24 @@ def update_my_profile(request):
 
     return render(request, 'stay_underflow/edit_profile.html', context)
 
+def search_bar(request):
+    return search_tags(request) if request.GET.get("search_options") == 'tag_post' else search_users(request)
+
+
 def search_users(request):
-    username = request.GET["username"]
+    username = request.GET.get("search_v", None)
 
     users_list = [x.username for x in User.objects.filter(username__icontains=username) if username != ""]
 
     return render(request, 'stay_underflow/users.html', {
             "user_list": users_list
         })
+
+def search_tags(request):
+    print(request.GET)
+    return render(request, 'stay_underflow/stayunderflow.html', {
+        "posts": Post.objects.filter(tags__name__in=[request.GET.get("search_v", None)])
+    })
 
 def other_profile(request,username=""):
     id = User.objects.get(username=username).id
@@ -170,6 +180,7 @@ class Stayunderflow(ListView):
         context['unanswered'] = llista
 
         return context
+
 
 class PostsByTag(ListView):
     template_name = 'stay_underflow/stayunderflow.html'
