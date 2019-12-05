@@ -19,8 +19,17 @@
                 {% else %}
                 <p class="text-secondary">{{ profile_user.email }}</p>
                 {% endif %}
+                <div style="display: inline-block;">
+                    {% if profile_user.perfil.reputation > 100 and profile_user.perfil.reputation <= 150 %}
+                    <img src="/static/images/recompensa_1.png" class="center" style="float: left" title="Que és això?">
+                    {% elif  profile_user.perfil.reputation > 150 and profile_user.perfil.reputation <= 200 %}
+                    <img src="/static/images/recompensa_2.png" class="center" style="float: left" title="Que és això?">
+                    {% elif profile_user.perfil.reputation > 200 %}
+                    <img src="/static/images/recompensa_3.png" class="center" style="float: left" title="Que és això?">
+                    {% endif %}
                 {% if profile_user.perfil.recompensa %}
                     <img src="/static/images/recompensa.png" title="Que és això?">
+                </div>
                 {% endif %}
             </div>
         </div>
