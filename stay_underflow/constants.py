@@ -1,6 +1,9 @@
 from enum import Enum
 
+from utils.time import forDjango
 
+
+@forDjango
 class Flags(Enum):
     SPAM = "spam"
     RUDE_OR_ABUSIVE = "rude or abusive"
