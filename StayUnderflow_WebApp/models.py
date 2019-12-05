@@ -73,5 +73,8 @@ class FlagPost(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     descripcion = models.CharField(
         max_length=100,
-        choices=[(tag, tag.value) for tag in Flags]
+        choices=[(tag.value, tag.name) for tag in Flags]
     )
+
+    def get_absolute_url(self):
+        return reverse('post-detail', kwargs={'pk': self.post.pk})
