@@ -95,9 +95,15 @@ def like_ans(request,pk,id):
         l = Like(author=User.objects.get(id=request.user.id))
         l.save()
         an.likes.add(l)
+        an.author.perfil.reputation += 10
+
     else:
         an.likes.remove(likes[0])
         likes[0].delete()
+        an.author.perfil.reputation -= 10
+        if an.author.perfil.recompensa < 1: an.author.perfil.reputation = 1
+
+    an.author.perfil.save()
 
     return redirect('/stayunderflow/post/' + str(pk) + '/')
 
@@ -105,21 +111,30 @@ def like_ans(request,pk,id):
 def best_ans(request,pk,id):
     an = Answer.objects.get(id = id)
     post = Post.objects.get(id = pk)
+    
+    perfil = request.user.perfil
 
     if an.best:
         an.best = False
+        an.author.perfil.reputation -= 20
+        if an.author.perfil.recompensa < 1: an.author.perfil.reputation = 1
+        perfil.reputation -= 2
+        if perfil.reputation < 1: perfil.reputation = 1
+
     else:
         an.best = True
         post.done = True
+        an.author.perfil.reputation += 20
+        perfil.reputation += 2
+
     an.save()
+    an.author.perfil.save()
 
     all_answers = Answer.objects.filter(post_id=pk).filter(best=True)
     if all_answers.__len__() == 0:
         post.done = False
 
     post.save()
-
-    perfil = request.user.perfil
 
     if not perfil.recompensa:
         perfil.reputation += 50

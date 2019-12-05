@@ -3,11 +3,14 @@
 {% block title %}My profile{% endblock %}
 
 {% block content %}
-    <div class="content-section">
+    <div class="content-section" style="margin-bottom: -1%;">
         <div class="media">
-            <a href="{{ user.perfil.image.url }}" id="img" data-lightbox="{{ user.username }} profile picture" data-title="{{ user.username }} profile picture" title="Haz clic para ampliar la fotografía">
-                <img class="rounded-circle account-img" src="{{ user.perfil.image.url }}" width="200" height="200">
-            </a>
+            <div style="width: 15.5%; text-align: center;">
+                <a href="{{ user.perfil.image.url }}" id="img" data-lightbox="{{ user.username }} profile picture" data-title="{{ user.username }} profile picture" title="Haz clic para ampliar la fotografía">
+                    <img class="rounded-circle account-img" src="{{ user.perfil.image.url }}" width="200" height="200"  style="margin-top: 4%;">
+                </a>
+                <h5 style="text-align: center; margin-top: 5%;">{{ user.perfil.reputation }} reputation</h4>
+            </div>
             <div class="media-body" style="margin-left: 2%;">
                 <h2 class="account-heading">{{ user.username }}</h2>
                 {% if user.first_name != '' %}
@@ -16,8 +19,17 @@
                 {% else %}
                 <p class="text-secondary">{{ user.email }}</p>
                 {% endif %}
+                <div style="display: inline-block;">
+                    {% if user.perfil.reputation > 100 and user.perfil.reputation <= 150 %}
+                    <img src="/static/images/recompensa_1.png" class="center" style="float: left" title="Que és això?">
+                    {% elif  user.perfil.reputation > 150 and user.perfil.reputation <= 200 %}
+                    <img src="/static/images/recompensa_2.png" class="center" style="float: left" title="Que és això?">
+                    {% elif user.perfil.reputation > 200 %}
+                    <img src="/static/images/recompensa_3.png" class="center" style="float: left" title="Que és això?">
+                    {% endif %}
                 {% if user.perfil.recompensa %}
                     <img src="/static/images/recompensa.png" title="Que és això?">
+                </div>
                 {% endif %}
                 <h5 style="margin-top: 1.5%;"><a href="{% url 'edit_profile' %}">Edit your profile</a></h5>
             </div>

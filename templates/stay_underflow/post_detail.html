@@ -7,7 +7,15 @@
     <div>
         <div class="content">
             <div class="media">
-                <img class="rounded-circle" src="{{ object.author.perfil.image.url }}" width="80" height="80">
+                <div><img class="rounded-circle" src="{{ object.author.perfil.image.url }}" width="80" height="80">
+                    {% if object.author.perfil.reputation > 100 and object.author.perfil.reputation <= 150 %}
+                    <img src="/static/images/recompensa_1.png" class="center" style="margin-top: 13%; width: 80%;" title="Que és això?">
+                    {% elif  object.author.perfil.reputation > 150 and object.author.perfil.reputation <= 200 %}
+                    <img src="/static/images/recompensa_2.png" class="center" style="margin-top: 13%; width: 80%;" title="Que és això?">
+                    {% elif object.author.perfil.reputation > 200 %}
+                    <img src="/static/images/recompensa_3.png" class="center" style="margin-top: 13%; width: 80%;" title="Que és això?">
+                    {% endif %}
+                </div>
                 <div class="media-body" style="margin-left: 1%;">
                     <h1>{{ object.title }}</h1>
                     <p class="text-secondary">By <a href="{%url 'profile' object.author %}">{{ object.author }}</a> on {{ object.date_posted|date:"j F, Y"}} at {{ object.date_posted|date:"G:i" }}</p>
@@ -38,7 +46,15 @@
                 <div class="content">
             {% endif %}
                     <div class="media" style="margin-top: 0.5%;">
-                        <img class="rounded-circle" src="{{ ans.author.perfil.image.url }}" width="50" height="50">
+                        <div style="text-align: center;"><img class="rounded-circle" src="{{ ans.author.perfil.image.url }}" width="50" height="50">
+                            {% if ans.author.perfil.reputation > 100 and ans.author.perfil.reputation <= 150 %}
+                            <img src="/static/images/recompensa_1.png" class="center" style="margin-top: 13%; width:55%;" title="Que és això?">
+                            {% elif  ans.author.perfil.reputation > 150 and ans.author.perfil.reputation <= 200 %}
+                            <img src="/static/images/recompensa_2.png" class="center" style="margin-top: 13%; width:55%;" title="Que és això?">
+                            {% elif ans.author.perfil.reputation > 200 %}
+                            <img src="/static/images/recompensa_3.png" class="center" style="margin-top: 13%; width:55%;" title="Que és això?">
+                            {% endif %}
+                        </div>
                         <div class="media-body" style="margin-left: 1%; margin-top: 1%;">
                             <p> By <a href="{%url 'profile' ans.author %}">{{ ans.author }}</a> on {{ ans.date_posted|date:"j F, Y"}} at {{ ans.date_posted|date:"G:i" }}</p>
                             <p style="margin-top: 2.2%;">{{ ans.content }}</p>
