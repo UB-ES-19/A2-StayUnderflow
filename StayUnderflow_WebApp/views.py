@@ -7,7 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib import messages
-from .models import Post, Answer, User, Like
+from .models import Post, Answer, User, Like, Perfil
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 import operator
@@ -36,9 +36,9 @@ def register(request):
 
 @login_required()
 def my_profile(request):
-    posts = [(x.title,x.content) for x in Post.objects.filter(author_id=request.user.pk)]
+    posts = [(x.title,x.content, x.id, x.views) for x in Post.objects.filter(author_id=request.user.pk)]
     answers = [(x.post_id,x.content) for x in Answer.objects.filter(author_id=request.user.pk)]
-    answers = [(y,Post.objects.get(id=x).title) for x,y in answers]
+    answers = [(y,Post.objects.get(id=x).title,x) for x,y in answers]
 
     return render(request, 'stay_underflow/profile.html', {
         "username":request.user.username,
@@ -63,8 +63,12 @@ def update_my_profile(request):
 
     return render(request, 'stay_underflow/edit_profile.html', context)
 
+def search_bar(request):
+    return search_tags(request) if request.GET.get("search_options") == 'tag_post' else search_users(request)
+
+
 def search_users(request):
-    username = request.GET["username"]
+    username = request.GET.get("search_v", None)
 
     users_list = [x.username for x in User.objects.filter(username__icontains=username) if username != ""]
 
@@ -72,13 +76,19 @@ def search_users(request):
             "user_list": users_list
         })
 
+def search_tags(request):
+    print(request.GET)
+    return render(request, 'stay_underflow/stayunderflow.html', {
+        "posts": Post.objects.filter(tags__name__in=[request.GET.get("search_v", None)])
+    })
+
 def other_profile(request,username=""):
     id = User.objects.get(username=username).id
     profile_user = User.objects.get(username=username)
 
-    posts = [(x.title,x.content) for x in Post.objects.filter(author_id=id)]
+    posts = [(x.title,x.content,x.id, x.views) for x in Post.objects.filter(author_id=id)]
     answers = [(x.post_id, x.content) for x in Answer.objects.filter(author_id=id)]
-    answers = [(y, Post.objects.get(id=x).title) for x, y in answers]
+    answers = [(y, Post.objects.get(id=x).title,x) for x, y in answers]
 
     return render(request, 'stay_underflow/others_profile.html', {
         "profile_user":profile_user,
@@ -95,21 +105,52 @@ def like_ans(request,pk,id):
         l = Like(author=User.objects.get(id=request.user.id))
         l.save()
         an.likes.add(l)
+        an.author.perfil.reputation += 10
+
     else:
         an.likes.remove(likes[0])
         likes[0].delete()
+        an.author.perfil.reputation -= 10
+        if an.author.perfil.recompensa < 1: an.author.perfil.reputation = 1
+
+    an.author.perfil.save()
 
     return redirect('/stayunderflow/post/' + str(pk) + '/')
 
 @login_required()
 def best_ans(request,pk,id):
     an = Answer.objects.get(id = id)
+    post = Post.objects.get(id = pk)
+    
+    perfil = request.user.perfil
 
     if an.best:
         an.best = False
+        an.author.perfil.reputation -= 20
+        if an.author.perfil.recompensa < 1: an.author.perfil.reputation = 1
+        perfil.reputation -= 2
+        if perfil.reputation < 1: perfil.reputation = 1
+
     else:
         an.best = True
+        post.done = True
+        an.author.perfil.reputation += 20
+        perfil.reputation += 2
+
     an.save()
+    an.author.perfil.save()
+
+    all_answers = Answer.objects.filter(post_id=pk).filter(best=True)
+    if all_answers.__len__() == 0:
+        post.done = False
+
+    post.save()
+
+    if not perfil.recompensa:
+        perfil.reputation += 50
+        perfil.recompensa = True
+
+    perfil.save()
 
     return redirect('/stayunderflow/post/' + str(pk) + '/')
 
@@ -119,6 +160,27 @@ class Stayunderflow(ListView):
     template_name = 'stay_underflow/stayunderflow.html' #pagina web que utilitza per a carregar la view
     context_object_name = 'posts' # llista que utilitza (a la view) per ordenar
     ordering = ['-date_posted'] # ordena els posts de data més recent a menys
+
+    def get_context_data(self, **kwargs):
+        context = super(Stayunderflow,self).get_context_data(**kwargs)
+
+        context['done'] = context['posts'].filter(done=True)
+        context['undone'] = context['posts'].filter(done=False)
+
+        
+        llista = []
+        hot = []
+        for post in context['posts']:
+            if len(post.answer_set.all()) == 0:
+                llista.append(post)
+            if post.views >= 100:
+                hot.append(post)
+
+        context['hot'] = hot
+        context['unanswered'] = llista
+
+        return context
+
 
 class PostsByTag(ListView):
     template_name = 'stay_underflow/stayunderflow.html'
@@ -138,6 +200,21 @@ class PostDetailView(DetailView):
         x = [(x,x.likes.count()) for x in context['post'].answer_set.all()]
         x.sort(key = lambda x:x[1], reverse = True)
         context['answers'] = [y[0] for y in x]
+
+        post = Post.objects.get(id=context['post'].id)
+        post.views = post.views+1
+        post.save()
+
+        context['views'] = post.views
+
+        if post.views >= 10 and post.views < 25:
+            context["medalla"] = 1
+        elif post.views >= 25 and post.views < 100:
+            context["medalla"] = 2
+        elif post.views >= 100:
+            context["medalla"] = 3
+        else:
+            context["medalla"] = 0
 
         return context
 

@@ -1,17 +1,36 @@
-<head>
-    <meta charset="UTF-8">
-    <title>Profile</title>
-</head>
-
 {% extends 'stay_underflow/base.html' %}
+
+{% block title %}{{ profile_user.username }} profile{% endblock %}
 
 {% block content %}
     <div class="content-section">
         <div class="media">
-            <img class="rounded-circle account-img" src="{{ profile_user.perfil.image.url }}" width="200" height="200">
+            <div style="width: 15.5%; text-align: center;">
+                <a href="{{ profile_user.perfil.image.url }}" id="img" data-lightbox="{{ profile_user.username }} profile picture" data-title="{{ profile_user.username }} profile picture" title="Haz clic para ampliar la fotografía">
+                    <img class="rounded-circle account-img" src="{{ profile_user.perfil.image.url }}" width="200" height="200"  style="margin-top: 4%;">
+                </a>
+                <h5 style="text-align: center; margin-top: 5%;">{{ profile_user.perfil.reputation }} reputation</h4>
+            </div>
             <div class="media-body" style="margin-left: 2%;">
                 <h2 class="account-heading">{{ profile_user.username }}</h2>
+                {% if profile_user.first_name != '' %}
+                <p class="text-secondary">{{ profile_user.first_name }} {{ profile_user.last_name }}</p>
+                <p class="text-secondary" style="margin-top: -1.3%;">{{ profile_user.email }}</p>
+                {% else %}
                 <p class="text-secondary">{{ profile_user.email }}</p>
+                {% endif %}
+                <div style="display: inline-block;">
+                    {% if profile_user.perfil.reputation > 100 and profile_user.perfil.reputation <= 150 %}
+                    <img src="/static/images/recompensa_1.png" class="center" style="float: left" title="Que és això?">
+                    {% elif  profile_user.perfil.reputation > 150 and profile_user.perfil.reputation <= 200 %}
+                    <img src="/static/images/recompensa_2.png" class="center" style="float: left" title="Que és això?">
+                    {% elif profile_user.perfil.reputation > 200 %}
+                    <img src="/static/images/recompensa_3.png" class="center" style="float: left" title="Que és això?">
+                    {% endif %}
+                {% if profile_user.perfil.recompensa %}
+                    <img src="/static/images/recompensa.png" title="Que és això?">
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -20,11 +39,22 @@
         <div class="questions" style="float: left">
             <div style="text-align: center">QUESTIONS</div>
         <br>
-            {% if  posts%}
+            {% if  posts %}
                 {% for post in posts %}
                     <div class="content">
-                        <p><b>{{post.0 }}</b></p>
+                        <a href="{% url 'post-detail' post.2 %}" title="Go to the post"><p><b></b>{{post.0 }}</b></p></a>
                         <p>{{ post.1 }}</p>
+                        {% if post.3 >= 0 %}
+                        <p class="like" style="width: 50%; float: right; margin-top: -30px;">
+                            {% if post.3 >= 10 and post.3 < 25 %}
+                                <i class="fas fa-medal" style="color: #CD7F32; margin-right: 5px"></i>
+                            {% elif post.3 >= 25 and post.3 < 100 %}
+                                <i class="fas fa-medal" style="color: #C0C0C0; margin-right: 5px"></i>
+                            {% elif post.3 >= 100 %}
+                                <i class="fas fa-medal" style="color: #D4AF37; margin-right: 5px"></i>
+                            {% endif %}
+                        </p>
+                        {% endif %}
                     </div>
                 {% endfor %}
             {% else %}
@@ -38,7 +68,7 @@
                 {% for answer in answers %}
                     <div class="content">
                         <p>Responded: <b>{{answer.0 }}</b></p>
-                        <p>To:{{ answer.1 }}</p>
+                        <p>To: <a href="{% url 'post-detail' answer.2 %}" title="Go to the post">{{ answer.1 }}</a></p>
                     </div>
                 {% endfor %}
             {% else %}
@@ -46,6 +76,5 @@
             {% endif %}
         </div>
     </div>
-
 
 {% endblock %}
