@@ -9,7 +9,7 @@
 }
 
 .inputCercaHeader {
-    width: 80%;
+    width: 65%;
     font-size: 160%;
 }
 .inputCercaHeader, .buttonCercaHeader {
@@ -17,6 +17,13 @@
     overflow: visible;
     background-color: #D2D2D4;
     border: none;
+    font-size: 170%;
+}
+#search_o {
+  padding-left: 2%;
+  -webkit-appearance:none;
+  padding-right: 4%;
+  font-size: 160%;
 }
 
 .row:after{
@@ -199,4 +206,57 @@ input:checked + .slider:before {
 .placeDescriptionP{
     color: #7685A2;
     font-size: 3.6em;
+}
+
+/*TABS*/
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  border-radius: 9px 9px 0px 0px;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  border-right: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-radius: 6px 6px 0px 0px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  border-top: 4px solid #f1914c;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 0px;
+  border-top: none;
+  -webkit-animation: fadeEffect 1s;
+  animation: fadeEffect 1s;
+}
+
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }

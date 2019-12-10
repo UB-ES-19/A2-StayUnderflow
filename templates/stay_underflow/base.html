@@ -5,6 +5,8 @@
         <meta charset="UTF-8">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
     <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -23,9 +25,11 @@
             <div class="column">
                 <a class="aHeader" href="{% url 'stayunderflow_home' %}">StayUnderflow</a>
             </div>
+
             <div class="column cerca">
-                <form action="{% url 'users'%}" method="get">
+                <form action="{% url 'search' %}" method="get">
                     <div class="input-group mb-3">
+
                       <div class="input-group-prepend">
                         <span class="input-group-text buttonCercaHeader" id="basic-addon1">
                             <button class="buttonCercaHeader" type="submit"> 
@@ -33,7 +37,13 @@
                             </button>
                         </span>
                       </div>
-                      <input class="inputCercaHeader" name="username" type="text" placeholder="Busca usuaris..." autocomplete="off"/>
+
+                    <select class="buttonCercaHeader" name="search_options" id="search_o">
+                        <option value="tag_post" selected>Posts</option>
+                        <option value="users">Usuaris</option>
+                    </select>
+
+                    <input class="inputCercaHeader" name="search_v" type="text" placeholder="Busca usuaris o posts..." autocomplete="off"/>
                     </div>
                 </form>
             </div>
