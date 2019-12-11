@@ -97,6 +97,7 @@
 
         {% if user.is_authenticated %}
             <a class="btn btn-outline-dark" href="{% url 'new-answer' pk=object.pk %}">Nova resposta</a>
+            <a class="btn btn-outline-dark" href="{% url 'new-post-from' pk=object.pk %}">Nova pregunta relacionada</a>
         {% else %}
             <a class="btn btn-outline-dark" href="{% url 'register' %}">Nova resposta</a>
         {% endif %}
