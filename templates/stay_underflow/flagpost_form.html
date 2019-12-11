@@ -1,0 +1,18 @@
+{% extends 'stay_underflow/base.html' %}
+    
+{% block title %}Flag the post{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="contentReg">
+        <h1>New flagt</h1>
+
+        <form action="" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+            <p style="text-align: center"><input class="btn btn-outline-dark" type="submit" value="Flag"></p>
+        </form>
+    </div>
+
+{% endblock %}
