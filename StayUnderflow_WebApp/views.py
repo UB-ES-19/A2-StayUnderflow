@@ -218,6 +218,9 @@ class PostDetailView(DetailView):
 
         context['referencia'] = context['post'].referencia_a
 
+        if context['post'].referencia_a != -1:
+            context['nom_referencia'] = Post.objects.get(pk=context['post'].referencia_a).title
+
         return context
 
 class CreatePost(LoginRequiredMixin, CreateView):
