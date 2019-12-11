@@ -19,6 +19,7 @@ urlpatterns = [
     path('stayunderflow/post/<int:pk>/answer/<int:id>/like', views.like_ans, name='ans-like'),
     path('stayunderflow/post/<int:pk>/answer/<int:id>/best', views.best_ans, name='ans-best'),
     path('stayunderflow/post/new/', CreatePost.as_view(), name='new-post'),
+    path('stayunderflow/post/new/<int:pk>', CreatePost.as_view(), name='new-post-from'),
     path('stayunderflow/post/<int:pk>/answer/', CreateAnswer.as_view(), name='new-answer'),
     path('stayunderflow/post/<int:pk>/flag/', CreateFlagPost.as_view(), name='new-flagpost'),
     path('stayunderflow/post/edit/', views.update_my_profile, name='edit_profile'),

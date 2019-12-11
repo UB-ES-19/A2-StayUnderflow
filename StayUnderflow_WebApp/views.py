@@ -216,6 +216,11 @@ class PostDetailView(DetailView):
         else:
             context["medalla"] = 0
 
+        context['referencia'] = context['post'].referencia_a
+
+        if context['post'].referencia_a != -1:
+            context['nom_referencia'] = Post.objects.get(pk=context['post'].referencia_a).title
+
         return context
 
 class CreatePost(LoginRequiredMixin, CreateView):
@@ -224,6 +229,9 @@ class CreatePost(LoginRequiredMixin, CreateView):
     template_name = 'stay_underflow/post_form.html'
 
     def form_valid(self, form):
+        if 'pk' in self.kwargs:
+            form.instance.referencia_a = self.kwargs['pk']
+
         form.instance.author = self.request.user
         return super().form_valid(form)
 
