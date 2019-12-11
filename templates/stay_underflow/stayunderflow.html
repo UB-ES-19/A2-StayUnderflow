@@ -21,6 +21,8 @@
       <button class="tablinks" onclick="openQuestions(event,  'Done')">Done</button>
       <button class="tablinks" onclick="openQuestions(event, 'Undone')">Undone</button>
       <button class="tablinks" onclick="openQuestions(event, 'Unanswered')">Unanswered</button>
+      <button class="tablinks" onclick="openQuestions(event, 'LastWeek')">Last week</button>
+      <button class="tablinks" onclick="openQuestions(event, 'LastMonth')">Last Month</button>
     </div>
 
     <div id="All" class="tabcontent city" style="display: block">
@@ -174,6 +176,84 @@
     <div id="Unanswered" class="tabcontent city" style="display:none">
     {% if unanswered %}
         {% for post in unanswered %}
+            <div class="content">
+                <div class="media">
+                    <div><img class="rounded-circle" src="{{ post.author.perfil.image.url }}" width="80" height="80">
+                        {% if post.author.perfil.reputation > 100 and post.author.perfil.reputation <= 150 %}
+                        <img src="/static/images/recompensa_1.png" class="center" style="margin-top: 13%;" title="Que és això?">
+                        {% elif  post.author.perfil.reputation > 150 and post.author.perfil.reputation <= 200 %}
+                        <img src="/static/images/recompensa_2.png" class="center" style="margin-top: 13%;" title="Que és això?">
+                        {% elif post.author.perfil.reputation > 200 %}
+                        <img src="/static/images/recompensa_3.png" class="center" style="margin-top: 13%;" title="Que és això?">
+                        {% endif %}
+                    </div>
+                    <div class="media-body" style="margin-left: 1%;">
+                        <a href="{% url 'post-detail' post.id %}" style="color: black"><h1>{{ post.title }}</h1></a>
+                        <p class="text-secondary">By <a href="{%url 'profile' post.author %}">{{ post.author }}</a> on {{ post.date_posted|date:"j F, Y"}} at {{ post.date_posted|date:"G:i" }}</p>
+                        <p>{{ post.content }}</p>
+                        {% if post.views >= 0 %}
+                        <p class="like" style="width: 50%; float: right; margin-top: -30px;">
+                            {% if post.views >= 10 and post.views < 25 %}
+                                <i class="fas fa-medal" style="color: #CD7F32; margin-right: 5px"></i>
+                            {% elif post.views >= 25 and post.views < 100 %}
+                                <i class="fas fa-medal" style="color: #C0C0C0; margin-right: 5px"></i>
+                            {% elif post.views >= 100 %}
+                                <i class="fas fa-medal" style="color: #D4AF37; margin-right: 5px"></i>
+                            {% endif %}
+                        </p>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %}
+    {% else %}
+        There are no unanswered posts.
+    {% endif %}
+    </div>
+
+    <div id="LastWeek" class="tabcontent city" style="display:none">
+    {% if last_week %}
+        {% for post in last_week %}
+            <div class="content">
+                <div class="media">
+                    <div><img class="rounded-circle" src="{{ post.author.perfil.image.url }}" width="80" height="80">
+                        {% if post.author.perfil.reputation > 100 and post.author.perfil.reputation <= 150 %}
+                        <img src="/static/images/recompensa_1.png" class="center" style="margin-top: 13%;" title="Que és això?">
+                        {% elif  post.author.perfil.reputation > 150 and post.author.perfil.reputation <= 200 %}
+                        <img src="/static/images/recompensa_2.png" class="center" style="margin-top: 13%;" title="Que és això?">
+                        {% elif post.author.perfil.reputation > 200 %}
+                        <img src="/static/images/recompensa_3.png" class="center" style="margin-top: 13%;" title="Que és això?">
+                        {% endif %}
+                    </div>
+                    <div class="media-body" style="margin-left: 1%;">
+                        <a href="{% url 'post-detail' post.id %}" style="color: black"><h1>{{ post.title }}</h1></a>
+                        <p class="text-secondary">By <a href="{%url 'profile' post.author %}">{{ post.author }}</a> on {{ post.date_posted|date:"j F, Y"}} at {{ post.date_posted|date:"G:i" }}</p>
+                        <p>{{ post.content }}</p>
+                        {% if post.views >= 0 %}
+                        <p class="like" style="width: 50%; float: right; margin-top: -30px;">
+                            {% if post.views >= 10 and post.views < 25 %}
+                                <i class="fas fa-medal" style="color: #CD7F32; margin-right: 5px"></i>
+                            {% elif post.views >= 25 and post.views < 100 %}
+                                <i class="fas fa-medal" style="color: #C0C0C0; margin-right: 5px"></i>
+                            {% elif post.views >= 100 %}
+                                <i class="fas fa-medal" style="color: #D4AF37; margin-right: 5px"></i>
+                            {% endif %}
+                        </p>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %}
+    {% else %}
+        There are no unanswered posts.
+    {% endif %}
+    </div>
+
+    <div id="LastMonth" class="tabcontent city" style="display:none">
+    {% if last_month %}
+        {% for post in last_month %}
             <div class="content">
                 <div class="media">
                     <div><img class="rounded-circle" src="{{ post.author.perfil.image.url }}" width="80" height="80">

@@ -10,6 +10,7 @@ from django.contrib import messages
 from .models import Post, Answer, User, Like, Perfil, FlagPost
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from datetime import date, timedelta
 import operator
 
 # Create your views here.
@@ -179,6 +180,11 @@ class Stayunderflow(ListView):
         context['hot'] = hot
         context['unanswered'] = llista
 
+        d = date.today() - timedelta(days=7)
+        context['last_week'] = context['posts'].filter(date_posted__gte=d)
+
+        d = date.today() - timedelta(days=30)
+        context['last_month'] = context['posts'].filter(date_posted__gte=d)
         return context
 
 
