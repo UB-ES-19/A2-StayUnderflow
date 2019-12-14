@@ -7,7 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib import messages
-from .models import Post, Answer, User, Like, Perfil, FlagPost
+from .models import Post, Answer, User, Like, Perfil, FlagPost, FlagAnswer
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 import operator
@@ -244,5 +244,16 @@ class CreateFlagPost(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.post = Post.objects.get(pk=self.kwargs['pk'])
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
+class CreateFlagAnswer(LoginRequiredMixin, CreateView):
+    model = FlagAnswer
+    fields = ['descripcion']
+    template_name = 'stay_underflow/flaganswer_form.html'
+
+    def form_valid(self, form):
+        form.instance.answer = Answer.objects.get(id=self.kwargs['id'])
         form.instance.author = self.request.user
         return super().form_valid(form)
