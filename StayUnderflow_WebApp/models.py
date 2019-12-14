@@ -18,6 +18,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete= models.CASCADE)  # quan s'elimina un usuari també s'eliminen els seus posts
 
     done = models.fields.BooleanField(default=False)
+    referencia_a = models.IntegerField(default=-1)
 
     tags = TaggableManager()
 
@@ -79,3 +80,15 @@ class FlagPost(models.Model):
 
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk': self.post.pk})
+
+
+class FlagAnswer(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    answer = models.ForeignKey(Answer, on_delete=models.CASCADE)
+    descripcion = models.CharField(
+        max_length=100,
+        choices=[(tag.value, tag.name) for tag in Flags]
+    )
+
+    def get_absolute_url(self):
+        return reverse('post-detail', kwargs={'pk': self.answer.post.pk})
