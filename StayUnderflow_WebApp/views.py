@@ -254,6 +254,7 @@ class CreateAnswer(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+
 class CreateFlagPost(LoginRequiredMixin, CreateView):
     model = FlagPost
     fields = ['descripcion']
@@ -262,6 +263,12 @@ class CreateFlagPost(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.post = Post.objects.get(pk=self.kwargs['pk'])
         form.instance.author = self.request.user
+        num_post = FlagPost.objects.filter(post_id=self.kwargs['pk']).count() + 1
+        if num_post == 3:
+            Post.objects.filter(id=self.kwargs['pk']).update(hidden=True)
+        elif num_post >= 6:
+            Post.objects.filter(id=self.kwargs['pk']).delete()
+            return redirect('/stayunderflow/')
         return super().form_valid(form)
 
 
@@ -276,6 +283,6 @@ class CreateFlagAnswer(LoginRequiredMixin, CreateView):
         num_ans = FlagAnswer.objects.filter(answer_id=self.kwargs['id']).count() + 1
         if num_ans == 3:
             Answer.objects.filter(id=self.kwargs['id']).update(hidden=True)
-        elif num_ans == 6:
+        elif num_ans >= 6:
             Answer.objects.filter(id=self.kwargs['id']).delete()
         return super().form_valid(form)
