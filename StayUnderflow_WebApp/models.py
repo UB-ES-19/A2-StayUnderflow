@@ -51,6 +51,8 @@ class Answer(models.Model):
 
     best = models.fields.BooleanField(default=False)
 
+    hidden = models.BooleanField(default=False)
+
     # L'autor de la resposta
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     # El post al qual responem
