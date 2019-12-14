@@ -187,6 +187,9 @@ class Stayunderflow(ListView):
         context['last_month'] = context['posts'].filter(date_posted__gte=d)
         return context
 
+    def get_queryset(self):
+        return Post.objects.filter(hidden=False)
+
 
 class PostsByTag(ListView):
     template_name = 'stay_underflow/stayunderflow.html'
@@ -270,4 +273,9 @@ class CreateFlagAnswer(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.answer = Answer.objects.get(id=self.kwargs['id'])
         form.instance.author = self.request.user
+        num_ans = FlagAnswer.objects.filter(answer_id=self.kwargs['id']).count() + 1
+        if num_ans == 3:
+            Answer.objects.filter(id=self.kwargs['id']).update(hidden=True)
+        elif num_ans == 6:
+            Answer.objects.filter(id=self.kwargs['id']).delete()
         return super().form_valid(form)
