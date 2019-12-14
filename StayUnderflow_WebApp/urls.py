@@ -1,7 +1,7 @@
 from django.conf.urls import url, include
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from .views import PostDetailView, Stayunderflow, CreatePost, CreateAnswer, PostsByTag, CreateFlagPost
+from .views import PostDetailView, Stayunderflow, CreatePost, CreateAnswer, PostsByTag, CreateFlagPost, CreateFlagAnswer
 
 from . import views as views
 
@@ -21,6 +21,7 @@ urlpatterns = [
     path('stayunderflow/post/new/', CreatePost.as_view(), name='new-post'),
     path('stayunderflow/post/<int:pk>/answer/', CreateAnswer.as_view(), name='new-answer'),
     path('stayunderflow/post/<int:pk>/flag/', CreateFlagPost.as_view(), name='new-flagpost'),
+    path('stayunderflow/answer/<int:id>/flagans/', CreateFlagAnswer.as_view(), name='new-flaganswer'),
     path('stayunderflow/post/edit/', views.update_my_profile, name='edit_profile'),
     path('password-reset/', auth_views.PasswordResetView.as_view(template_name='stay_underflow/password_reset.html'), name='password_reset'),
     path('password-reset/done', auth_views.PasswordResetDoneView.as_view(template_name='stay_underflow/password_reset_done.html'), name='password_reset_done'),
