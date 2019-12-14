@@ -25,8 +25,6 @@ class Post(models.Model):
 
     views = models.IntegerField(default=0)
 
-    referencia_a = models.IntegerField(default=-1)
-
     def __str__(self):
         return self.title
 
