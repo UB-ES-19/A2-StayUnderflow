@@ -21,6 +21,7 @@ class Post(models.Model):
     referencia_a = models.IntegerField(default=-1)
 
     tags = TaggableManager()
+    hidden = models.BooleanField(default=False)
 
     views = models.IntegerField(default=0)
 
