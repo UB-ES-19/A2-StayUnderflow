@@ -19,6 +19,8 @@ class Post(models.Model):
 
     done = models.fields.BooleanField(default=False)
 
+    image = models.ImageField(default='default', upload_to='post_pics')
+
     tags = TaggableManager()
 
     views = models.IntegerField(default=0)
