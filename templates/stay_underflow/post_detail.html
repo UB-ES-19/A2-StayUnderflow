@@ -23,11 +23,17 @@
                     <p>Referenced from:
                         <a href="{% url 'post-detail' referencia %}">{{ nom_referencia }}</a>
                     </p>
-
                     {% endif %}
 
                     <p>Tags: {% for tag in object.tags.all %} <a href="{% url 'tag_post' tag.name %}"> {{ tag.name }}</a>{% endfor %}</p>
                     <p>{{ object.content }} </p>
+                    {% if object.image.url != "/media/default" %}
+                    {% if object.image.width > 1200 %}
+                    <img src="{{ object.image.url }}" style="width: 90%;">
+                    {% else %}
+                    <img src="{{ object.image.url }}">
+                    {% endif %}
+                    {% endif %}
                     {% if views >= 0 and medalla >= 0 %}
                     <p class="like" style="width: 50%; float: right;">
                         {% if medalla == 0 %}

@@ -20,6 +20,8 @@ class Post(models.Model):
     done = models.fields.BooleanField(default=False)
     referencia_a = models.IntegerField(default=-1)
 
+    image = models.ImageField(default='default', upload_to='post_pics')
+
     tags = TaggableManager()
     hidden = models.BooleanField(default=False)
 
