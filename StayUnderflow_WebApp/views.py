@@ -246,7 +246,7 @@ class CreatePost(LoginRequiredMixin, CreateView):
 
 class CreateAnswer(LoginRequiredMixin, CreateView):
     model = Answer
-    fields = ['content']
+    fields = ['content', 'image']
     template_name = 'stay_underflow/answer_form.html'
 
     def form_valid(self, form):

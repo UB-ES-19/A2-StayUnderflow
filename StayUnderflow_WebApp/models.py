@@ -47,6 +47,9 @@ class Answer(models.Model):
 
     # Contingut de la resposta
     content = models.TextField()
+
+    image = models.ImageField(default='default', upload_to='answer_pics')
+
     # Per defecte, la data del sistema
     date_posted = models.DateTimeField(default=get_time_local())
 

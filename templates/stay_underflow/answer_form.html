@@ -8,10 +8,11 @@
     <div class="contentReg">
         <h1>New answer</h1>
 
-        <form action="" method="post">
-        {% csrf_token %}
-        {{ form|crispy }}
-          <p style="text-align: center"><input class="btn btn-outline-dark" type="submit" value="Answer"></p>
+        <form action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.content|as_crispy_field }}
+          {{ form.image }}
+          <p style="text-align: center; margin-top: 2%;"><input class="btn btn-outline-dark" type="submit" value="Answer"></p>
         </form>
     </div>
 
