@@ -10,7 +10,8 @@ from django.contrib import messages
 from .models import Post, Answer, User, Like, Perfil, FlagPost, FlagAnswer
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from datetime import date, timedelta
+from datetime import timedelta
+from django.utils import timezone
 import operator
 
 # Create your views here.
@@ -167,7 +168,6 @@ class Stayunderflow(ListView):
 
         context['done'] = context['posts'].filter(done=True)
         context['undone'] = context['posts'].filter(done=False)
-
         
         llista = []
         hot = []
@@ -180,10 +180,10 @@ class Stayunderflow(ListView):
         context['hot'] = hot
         context['unanswered'] = llista
 
-        d = date.today() - timedelta(days=7)
+        d = timezone.now() - timedelta(days=7)
         context['last_week'] = context['posts'].filter(date_posted__gte=d)
 
-        d = date.today() - timedelta(days=30)
+        d = timezone.now() - timedelta(days=30)
         context['last_month'] = context['posts'].filter(date_posted__gte=d)
         return context
 
