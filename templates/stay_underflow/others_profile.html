@@ -19,18 +19,21 @@
                 {% else %}
                 <p class="text-secondary">{{ profile_user.email }}</p>
                 {% endif %}
-                <div style="display: inline-block;">
+                <div style="display: inline-block; width: 200px;">
                     {% if profile_user.perfil.reputation > 100 and profile_user.perfil.reputation <= 150 %}
-                    <img src="/static/images/recompensa_1.png" class="center" style="float: left" title="Que és això?">
+                    <img src="/static/images/recompensa_1.png" class="center" style="float: left;margin-right: 2%; width: 64px" title="Que és això?">
                     {% elif  profile_user.perfil.reputation > 150 and profile_user.perfil.reputation <= 200 %}
-                    <img src="/static/images/recompensa_2.png" class="center" style="float: left" title="Que és això?">
+                    <img src="/static/images/recompensa_2.png" class="center" style="float: left; margin-right: 2%; width: 64px" title="Que és això?">
                     {% elif profile_user.perfil.reputation > 200 %}
-                    <img src="/static/images/recompensa_3.png" class="center" style="float: left" title="Que és això?">
+                    <img src="/static/images/recompensa_3.png" class="center" style="float: left; margin-right: 2%; width: 64px" title="Que és això?">
                     {% endif %}
-                {% if profile_user.perfil.recompensa %}
-                    <img src="/static/images/recompensa.png" title="Que és això?">
+                    {% if is_freq %}
+                    <img src="/static/images/conocimiento.png" title="Aquest usuari pregunta freqüentment">
+                    {% endif %}
+                    {% if profile_user.perfil.recompensa %}
+                    <img src="/static/images/recompensa.png" title="Aquest usuari ja ha acceptat com a bona una resposta d'algú altre">
+                    {% endif %}
                 </div>
-                {% endif %}
             </div>
         </div>
     </div>

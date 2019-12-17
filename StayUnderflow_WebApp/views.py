@@ -42,10 +42,26 @@ def my_profile(request):
     answers = [(x.post_id,x.content) for x in Answer.objects.filter(author_id=request.user.pk)]
     answers = [(y,Post.objects.get(id=x).title,x) for x,y in answers]
 
+    sum_dates = [x.date_posted for x in Post.objects.filter(author_id=request.user.pk).order_by('date_posted').reverse()]
+    freq = 0
+    for i in range(len(sum_dates)):
+        if i != 0:
+            freq += (sum_dates[i-1] - sum_dates[i]).days
+
+    #contempla el cas que una persona just al entrar a la web comenci a fer preguntes com un animal
+    #en els casos normals calcula la freqüència dels intèrvals entre posts sempre que hi hagi més de 2
+    denominador = len(sum_dates) if freq == 0 else len(sum_dates)-1
+    #en el cas que els primers posts del usuari siguin el primer dia
+    freq =  1 if freq == 0 else freq
+    freq = freq/denominador if len(sum_dates) > 2 else 0
+
+    is_freq = True if freq >= 0.5 and freq <= 5 else False
+
     return render(request, 'stay_underflow/profile.html', {
-        "username":request.user.username,
+        "username": request.user.username,
         "posts": posts,
-        "answers" : answers
+        "answers" : answers,
+        "is_freq" : is_freq
     })
 
 @login_required()
@@ -92,10 +108,28 @@ def other_profile(request,username=""):
     answers = [(x.post_id, x.content) for x in Answer.objects.filter(author_id=id)]
     answers = [(y, Post.objects.get(id=x).title,x) for x, y in answers]
 
+    sum_dates = [x.date_posted for x in Post.objects.filter(author_id=id).order_by('date_posted').reverse()]
+    freq = 0
+    for i in range(len(sum_dates)):
+        if i != 0:
+            freq += (sum_dates[i-1] - sum_dates[i]).days
+
+    #contempla el cas que una persona just al entrar a la web comenci a fer preguntes com un animal
+    #en els casos normals calcula la freqüència dels intèrvals entre posts sempre que hi hagi més de 2
+    denominador = len(sum_dates) if freq == 0 else len(sum_dates)-1
+    #en el cas que els primers posts del usuari siguin el primer dia
+    freq =  1 if freq == 0 else freq
+    freq = freq/denominador if len(sum_dates) > 2 else 0
+
+    print(freq)
+
+    is_freq = True if freq >= 0.5 and freq <= 5 else False
+
     return render(request, 'stay_underflow/others_profile.html', {
         "profile_user":profile_user,
         "posts": posts,
-        "answers": answers
+        "answers": answers,
+        "is_freq": is_freq
     })
 
 @login_required()
@@ -161,10 +195,11 @@ class Stayunderflow(ListView):
     model =  Post # classe que agafa per anar a buscar les dades
     template_name = 'stay_underflow/stayunderflow.html' #pagina web que utilitza per a carregar la view
     context_object_name = 'posts' # llista que utilitza (a la view) per ordenar
-    ordering = ['-date_posted'] # ordena els posts de data més recent a menys
 
     def get_context_data(self, **kwargs):
         context = super(Stayunderflow,self).get_context_data(**kwargs)
+
+        context['posts'] = context['posts'].order_by('date_posted').reverse()
 
         context['done'] = context['posts'].filter(done=True)
         context['undone'] = context['posts'].filter(done=False)
