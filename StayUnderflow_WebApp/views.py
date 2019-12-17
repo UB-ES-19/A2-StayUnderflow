@@ -121,8 +121,6 @@ def other_profile(request,username=""):
     freq =  1 if freq == 0 else freq
     freq = freq/denominador if len(sum_dates) > 2 else 0
 
-    print(freq)
-
     is_freq = True if freq >= 0.5 and freq <= 5 else False
 
     return render(request, 'stay_underflow/others_profile.html', {
