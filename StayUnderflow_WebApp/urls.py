@@ -1,7 +1,8 @@
 from django.conf.urls import url, include
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from .views import PostDetailView, Stayunderflow, CreatePost, CreateAnswer, PostsByTag, CreateFlagPost, CreateFlagAnswer
+from .views import PostDetailView, Stayunderflow, CreatePost, CreateAnswer, PostsByTag, CreateFlagPost, \
+    CreateFlagAnswer, fav_post
 from django.contrib.auth.decorators import login_required
 from . import views as views
 
@@ -22,6 +23,7 @@ urlpatterns = [
     path('stayunderflow/post/new/<int:pk>', login_required(CreatePost.as_view()), name='new-post-from'),
     path('stayunderflow/post/<int:pk>/answer/', login_required(CreateAnswer.as_view()), name='new-answer'),
     path('stayunderflow/post/<int:pk>/flag/', login_required(CreateFlagPost.as_view()), name='new-flagpost'),
+    path('stayunderflow/post/<int:pk>/favorite/', login_required(fav_post), name='new-fav'),
     path('stayunderflow/answer/<int:id>/flagans/', CreateFlagAnswer.as_view(), name='new-flaganswer'),
     path('stayunderflow/post/edit/', views.update_my_profile, name='edit_profile'),
     path('password-reset/', auth_views.PasswordResetView.as_view(template_name='stay_underflow/password_reset.html'), name='password_reset'),

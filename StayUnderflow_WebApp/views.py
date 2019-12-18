@@ -7,7 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib import messages
-from .models import Post, Answer, User, Like, Perfil, FlagPost, FlagAnswer
+from .models import Post, Answer, User, Like, Perfil, FlagPost, FlagAnswer, Favorite
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from datetime import timedelta
@@ -131,6 +131,16 @@ def other_profile(request,username=""):
     })
 
 @login_required()
+def fav_post(request, pk):
+    fav = Favorite.objects.filter(author=request.user.id, post=pk)
+    if not fav:
+        Favorite(author=User.objects.get(id=request.user.id), post=Post.objects.get(id=pk)).save()
+    else:
+        fav.delete()
+    return redirect('/stayunderflow/post/' + str(pk) + '/')
+
+
+@login_required()
 def like_ans(request,pk,id):
     an = Answer.objects.get(id = id)
     likes = an.likes.filter(author = request.user.id)
@@ -248,6 +258,10 @@ class PostDetailView(DetailView):
         post.save()
 
         context['views'] = post.views
+
+        fav = Favorite.objects.filter(author=self.request.user.id, post=context['post'].id)
+        print(fav.__len__())
+        context['fav'] = fav.__len__() == 0
 
         if post.views >= 10 and post.views < 25:
             context["medalla"] = 1

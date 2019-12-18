@@ -34,6 +34,11 @@
                     <img src="{{ object.image.url }}">
                     {% endif %}
                     {% endif %}
+                    {% if fav %}
+                        <a href="{% url 'new-fav' object.id %}" class="fas fa-star"></a>
+                    {% else %}
+                        <a href="{% url 'new-fav' object.id %}" class="far fa-star"></a>
+                    {% endif %}
                     {% if views >= 0 and medalla >= 0 %}
                     <p class="like" style="width: 50%; float: right;">
                         {% if medalla == 0 %}
