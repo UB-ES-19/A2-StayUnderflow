@@ -260,8 +260,9 @@ class PostDetailView(DetailView):
         context['views'] = post.views
 
         fav = Favorite.objects.filter(author=self.request.user.id, post=context['post'].id)
-        print(fav.__len__())
         context['fav'] = fav.__len__() == 0
+        print(context['fav'])
+        context['favs'] = Favorite.objects.filter(post=context['post'].id).__len__()
 
         if post.views >= 10 and post.views < 25:
             context["medalla"] = 1
