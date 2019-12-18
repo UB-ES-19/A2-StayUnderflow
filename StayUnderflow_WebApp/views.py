@@ -188,6 +188,8 @@ def best_ans(request,pk,id):
 
     return redirect('/stayunderflow/post/' + str(pk) + '/')
 
+def help_center(request):
+    return render(request, 'stay_underflow/help_center.html')
 
 class Stayunderflow(ListView):
     model =  Post # classe que agafa per anar a buscar les dades
