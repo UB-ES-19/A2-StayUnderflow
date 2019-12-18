@@ -35,9 +35,9 @@
                     {% endif %}
                     {% endif %}
                     {% if fav %}
-                        <a href="{% url 'new-fav' object.id %}" class="fas fa-star"></a>
-                    {% else %}
                         <a href="{% url 'new-fav' object.id %}" class="far fa-star"></a>
+                    {% else %}
+                        <a href="{% url 'new-fav' object.id %}" class="fas fa-star"></a>
                     {% endif %}
                     {% if views >= 0 and medalla >= 0 %}
                     <p class="like" style="width: 50%; float: right;">
@@ -49,6 +49,12 @@
                             <i class="fas fa-medal" style="color: #C0C0C0; margin-right: 5px"></i>{{ views }} views
                         {% elif medalla == 3 %}
                             <i class="fas fa-medal" style="color: #D4AF37; margin-right: 5px"></i>{{ views }} views
+                        {% endif %}
+
+                        {% if favs > 10 %}
+                            <i class="fas fa-crown" style="color: #D4AF37; margin-right: 5px"></i>Question favorited by 10 users
+                        {% elif favs > 5 %}
+                            <i class="fas fa-crown" style="color: #C0C0C0; margin-right: 5px"></i>Question favorited by 5 users
                         {% endif %}
                     </p>
                     {% endif %}
