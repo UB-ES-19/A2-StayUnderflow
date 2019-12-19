@@ -30,5 +30,6 @@ urlpatterns = [
     path('password-reset/done', auth_views.PasswordResetDoneView.as_view(template_name='stay_underflow/password_reset_done.html'), name='password_reset_done'),
     path('password-reset-confirm/<uidb64>/<token>', auth_views.PasswordResetConfirmView.as_view(template_name='stay_underflow/password_reset_confirm.html'), name='password_reset_confirm'),
     path('password-reset-complete/', auth_views.PasswordResetCompleteView.as_view(template_name='stay_underflow/password_reset_complete.html'), name='password_reset_complete'),
-    path(r'stayunderflow/post/tags/<str:tag>', PostsByTag.as_view(), name='tag_post')
+    path(r'stayunderflow/post/tags/<str:tag>', PostsByTag.as_view(), name='tag_post'),
+    path('stayunderflow/help', views.help_center, name='help_center')
 ]
